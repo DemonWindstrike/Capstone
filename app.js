@@ -10,8 +10,9 @@ app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname + "/public/views/index.html"));
 });
 
-app.listen(3000, () => {
-    console.log("Server corriendo en le puerto", href='http://localhost:3000/' );
+app.listen(3002, () => {
+    console.log("Server corriendo en le puerto", href='http://localhost:3002/' );
 });
 
 app.use(express.static('public'));
+
