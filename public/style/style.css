@@ -249,6 +249,7 @@ a:focus {
 /*end header section*/
 /* slider section */
 .slider_section {
+  background-color: #17abb3;
   height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -390,15 +391,15 @@ a:focus {
 .discount_section .detail-box a {
   display: inline-block;
   padding: 10px 45px;
-  background-color: #10e7f4;
-  border: 1px solid #10e7f4;
+  background-color: #155f63;
+  border: 1px solid #14757a;
   color: #ffffff;
   margin-top: 35px;
 }
 
 .discount_section .detail-box a:hover {
   background-color: transparent;
-  color: #10e7f4;
+  color: #158288;
 }
 
 .discount_section .img-box img {
@@ -504,7 +505,7 @@ a:focus {
 }
 
 .health_section .box .detail-box .text h6.price span {
-  color: #10e7f4;
+  color: #197277;
 }
 
 .health_section .owl-carousel .owl-nav.disabled {
@@ -634,7 +635,7 @@ a:focus {
   width: 20px;
   height: 20px;
   opacity: 1;
-  background-color: #10e7f4;
+  background-color: #1e8c92;
   border-radius: 100%;
   position: relative;
 }
@@ -758,8 +759,8 @@ a:focus {
 .info_section .info_news form button {
   display: inline-block;
   padding: 7px 60px;
-  background-color: #10e7f4;
-  border: 1px solid #10e7f4;
+  background-color: #178f96;
+  border: 1px solid #168a91;
   color: #ffffff;
 }
 

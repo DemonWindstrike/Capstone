@@ -1,65 +1,47 @@
-// Dependencias
-const express = require('express')
-const app = express()
-const mysql = require('mysql')
-const cors = require('cors')
+const express = require('express');
+const bodyParser = require('body-parser');
+const db = require('../js/db'); // Asegúrate de tener la ruta correcta
 
-app.use(express.json())
-app.use(cors())
+const app = express();
+const port = 3000;
 
-// Run server
-app.listen(3002, ()=>{
-    console.log('Server is running on port 3002')
-})
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
+// Registro de usuario
+app.post('/registro', (req, res) => {
+  const { nombre, correo, contrasena } = req.body;
 
+  const sql = 'INSERT INTO users (nombre, correo, contrasena) VALUES (?, ?, ?)';
+  db.query(sql, [nombre, correo, contrasena], (err, result) => {
+    if (err) {
+      console.error('Error al registrar usuario:', err);
+      res.status(500).json({ error: 'Error al registrar usuario' });
+    } else {
+      res.status(201).json({ mensaje: 'Usuario registrado exitosamente' });
+    }
+  });
+});
 
+// Inicio de sesión
+app.post('/iniciar-sesion', (req, res) => {
+  const { correo, contrasena } = req.body;
 
-//Database
-const db = mysql.createConnection({
-    user:'root',
-    host:'localhost',
-    password:'',
-    database:'medihubdb',
-})
+  const sql = 'SELECT * FROM users WHERE correo = ? AND contrasena = ?';
+  db.query(sql, [correo, contrasena], (err, result) => {
+    if (err) {
+      console.error('Error al iniciar sesión:', err);
+      res.status(500).json({ error: 'Error al iniciar sesión' });
+    } else {
+      if (result.length > 0) {
+        res.status(200).json({ mensaje: 'Inicio de sesión exitoso' });
+      } else {
+        res.status(401).json({ error: 'Credenciales incorrectas' });
+      }
+    }
+  });
+});
 
-//Register
-app.post('/register', (req,res)=>{
-    const sentEmail = req.body.Email
-    const sentUserName = req.body.UserName
-    const sentPassword = req.body.Password
-
-    const SQL = 'INSERT INTO users (email, username, password) VALUES (?,?,?)'
-    const Values = [sentEmail, sentUserName, sentPassword]
-
-    db.query(SQL, Values, (err, results)=>{
-        if(err){
-            res.send(err)
-        }
-        else{
-            console.log('User inserted successfully!')
-            res.send({message: 'User added!'})
-        }
-    })
-})
-
-//Login
-app.post('/login', (req,res)=>{
-    const sentloginUserName = req.body.LoginUserName
-    const sentloginPassword = req.body.LoginPassword
-
-    const SQL = 'SELECT * FROM users WHERE username = ? && password = ?'
-    const Values = [sentloginUserName, sentloginPassword]
-
-    db.query(SQL, Values, (err, results)=>{
-        if(err){
-            res.send({error:err})
-        }
-        if(results.length > 0){
-            res.send(results)
-        }
-        else{
-            res.send({message: 'Credentials Don´t match!'})
-        }
-    })
-})
+app.listen(port, () => {
+  console.log(`Servidor en ejecución en http://localhost:${port}`);
+});
