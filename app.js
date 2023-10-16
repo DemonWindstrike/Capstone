@@ -49,20 +49,22 @@ app.get("/register", (req, res) => {
 
 //Registro
 
-app.post('/register'), async (req, res)=>{
+app.post('/register', async (req, res) => {
     const user = req.body.user;
     const name = req.body.name;
     const rol = req.body.rol;
     const pass = req.body.pass;
-    let passwordHaash = await bcryptjs.hash(pass,8);
-    connection.query('INSERT INTO users SET ?', {user:user, name:name, rol:rol, pass:passwordHaash}, async (error, result)=>{
-        if(error){
+    console.log(user, name, rol, pass);
+    let passwordHash = await bcryptjs.hash(pass, 8);
+    connection.query('INSERT INTO users SET ?', { user: user, name: name, rol: rol, pass: passwordHash }, async (error, result) => {
+        if (error) {
             console.log(error);
-        }else{
-            res.send('Alta exitosa')
+        } else {
+            res.send('Alta exitosa');
         }
-    })
-}
+    });
+});
+
 
 app.listen(3000, () => {
     console.log("Server corriendo en le puerto", href='http://localhost:3000/' );
