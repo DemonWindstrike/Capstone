@@ -36,7 +36,7 @@ const connection = require('./database/db')
 
 // Rutas
 app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname + "/public/views/index.html"));
+    res.sendFile(path.join(__dirname + "/views/index.html"));
 });
 
 app.get("/login", (req, res) => {
@@ -60,7 +60,7 @@ app.post('/register', async (req, res) => {
         if (error) {
             console.log(error);
         } else {
-            res.send('Alta exitosa');
+            res.render('index');
         }
     });
 });
