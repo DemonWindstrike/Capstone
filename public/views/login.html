@@ -26,80 +26,13 @@
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 </head>
 <body>
-  <div class="container-form register">
-    <div class="information">
-      <div class="info-childs">
-        <h2>Bienvenido</h2>
-        <p>Para unirte a nuestra comunidad por favor Inicia Sesión con tus datos</p>
-        <input type="button" value="Iniciar Sesión" id="sign-in">
-      </div>
-    </div>
-    <div class="form-information">
-      <div class="form-information-child">
-        <h2>Crear una Cuenta</h2>
-        <div class="icons">
-          <i class='bx bxl-google'></i>
-          <i class='bx bxl-github'></i>
-          <i class='bx bxl-linkedin'></i>
-        </div>
-        <p>o usa tu email para registrarte</p>
-        <form class="form">
-          <label>
-            <i class="bx bx-user"></i>
-            <input type="text" placeholder="Nombre Completo">
-          </label>
-          <label>
-            <i class="bx bx-envelope"></i>
-            <input type="email" placeholder="Correo Electronico">
-          </label>
-          <label>
-            <i class="bx bx-lock-alt"></i>
-            <input type="password" placeholder="Contraseña">
-          </label>
-          <form class="form" action="/iniciar-sesion" method="post">
-            <input type="submit" value="Registrarse">
-          </form>
-        </form>
-      </div>
-    </div>
+  <div class="divlogin-form">
+    <h2>Login con node js</h2>
+    <form action="auth" method="POST">
+      <input type="text" name="user" id="user" placeholder="User" required>
+      <input type="password" name="pass" id="pass" placeholder="Password" required>
+      <input type="submit" class="btn-login" value="Login">
+    </form>
+    <a href="register.html" class="Register"></a>
   </div>
-</body>
-
-<div class="container-form login hide">
-  <div class="information">
-    <div class="info-childs">
-      <h2>¡¡Bienvenido Nuevamente!!</h2>
-      <p>Para unirte a nuestra comunidad por favor Inicia Sesión con tus datos</p>
-      <input type="button" value="Registrarse" id="sign-up">
-    </div>
-  </div>
-  <div class="form-information">
-    <div class="form-information-child">
-      <h2>Iniciar Sesion</h2>
-      <div class="icons">
-        <i class='bx bxl-google'></i>
-        <i class='bx bxl-github'></i>
-        <i class='bx bxl-linkedin'></i>
-      </div>
-      <p>o Iniciar Sesión con una cuenta</p>
-      <form class="form">
-        <label>
-          <i class="bx bx-envelope"></i>
-          <input type="email" placeholder="Correo Electronico">
-        </label>
-        <label>
-          <i class="bx bx-lock-alt"></i>
-          <input type="password" placeholder="Contraseña">
-        </label>
-        <form class="form" action="/iniciar-sesion" method="post">
-          <input type="submit" value="Iniciar Sesión">
-        </form>
-      </form>
-    </div>
-  </div>
-</div>
-<script src="/js/script.js"></script>
-</body>
-
-
 </html>

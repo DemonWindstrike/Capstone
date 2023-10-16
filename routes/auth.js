@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 
-
 router.post('/views/login.html', (req, res) => {
   // Lógica para el inicio de sesión
 });
