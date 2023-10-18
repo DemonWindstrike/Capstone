@@ -18,7 +18,8 @@ app.use('/resources', express.static('public'));
 app.use('/resources', express.static(__dirname +'/public'));
 
 //Motor de plantillas
-app.set('view engine', 'ejs');
+app.set('view engine', 'html');
+app.engine('html', require('ejs').renderFile);
 
 //Invocar bcryptjs
 const bcryptjs = require('bcryptjs');
