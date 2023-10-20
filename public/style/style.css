@@ -171,6 +171,19 @@ a:focus {
   border-radius: 0;
 }
 
+.nav-item-1{
+  display: inline-block;
+  padding: 1px 1px;
+  background-color: #155f63;
+  border: 1px solid #14757a;
+  color: #ffffff;
+  margin-top: 1px;
+}
+
+.nav-item-1:hover{
+  background-color: transparent;
+}
+
 .login_btn-contanier a {
   text-transform: uppercase;
   color: #ffffff;
@@ -286,6 +299,7 @@ a:focus {
   color: #ffffff;
   margin-top: 35px;
   margin-bottom: 45px;
+  
 }
 
 .slider_section .detail-box a:hover {
