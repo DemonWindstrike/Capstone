@@ -26,7 +26,13 @@ document.addEventListener("DOMContentLoaded", function() {
       const email = document.getElementById('email').value; // Actualizado el id
       const user = document.getElementById('user').value; // Actualizado el id
       const pass = document.getElementById('pass').value; // Actualizado el id
-  
+      
+      if (!isValidEmail(email)) {
+        alert('Por favor, ingresa un correo electrónico válido.');
+        return;
+    }
+      
+
       fetch('http://localhost:3000/register', {
           method: 'POST',
           headers: {
@@ -42,6 +48,12 @@ document.addEventListener("DOMContentLoaded", function() {
         console.error('Error:',error);
       });
     });
+
+    function isValidEmail(email) {
+      // Utilizar una expresión regular para verificar el formato del correo electrónico
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email);
+  }
   
     // Inicio de sesión
     document.getElementById('submit_login').addEventListener('click', function(e) {
