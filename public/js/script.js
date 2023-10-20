@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById('submit_register').addEventListener('click', function(e) {
       e.preventDefault();
   
-      const name = document.getElementById('name').value; // Actualizado el id
+      const email = document.getElementById('email').value; // Actualizado el id
       const user = document.getElementById('user').value; // Actualizado el id
       const pass = document.getElementById('pass').value; // Actualizado el id
   
@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function() {
           headers: {
               'Content-Type': 'application/json'
           },
-          body: JSON.stringify({ name, user, pass }) // Actualizado para coincidir con los IDs
+          body: JSON.stringify({ email, user, pass }) // Actualizado para coincidir con los IDs
       })
       .then(response => response.json())
       .then(data => {

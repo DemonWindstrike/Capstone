@@ -51,12 +51,11 @@ app.get("/register", (req, res) => {
 
 app.post('/register', async (req, res) => {
     const user = req.body.user;
-    const name = req.body.name;
-
+    const email = req.body.email;
     const pass = req.body.pass;
-    console.log(user, name, pass);
+    console.log(user, email, pass);
     let passwordHash = await bcryptjs.hash(pass, 8);
-    connection.query('INSERT INTO users SET ?', { user: user, name: name, pass: passwordHash }, async (error, result) => {
+    connection.query('INSERT INTO users SET ?', { user: user, email: email, pass: passwordHash }, async (error, result) => {
         if (error) {
             console.log(error);
         } else {
