@@ -14,7 +14,6 @@ const dotenv = require('dotenv');
 dotenv.config({path:'./env/.env'});
 
 //Directorio Public
-app.use('/resources', express.static('public'));
 app.use('/resources', express.static(__dirname +'/public'));
 
 //Motor de plantillas
@@ -53,11 +52,11 @@ app.get("/register", (req, res) => {
 app.post('/register', async (req, res) => {
     const user = req.body.user;
     const name = req.body.name;
-    const rol = req.body.rol;
+
     const pass = req.body.pass;
-    console.log(user, name, rol, pass);
+    console.log(user, name, pass);
     let passwordHash = await bcryptjs.hash(pass, 8);
-    connection.query('INSERT INTO users SET ?', { user: user, name: name, rol: rol, pass: passwordHash }, async (error, result) => {
+    connection.query('INSERT INTO users SET ?', { user: user, name: name, pass: passwordHash }, async (error, result) => {
         if (error) {
             console.log(error);
         } else {
