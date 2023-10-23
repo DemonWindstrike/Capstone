@@ -178,6 +178,7 @@ a:focus {
   border: 1px solid #14757a;
   color: #ffffff;
   margin-top: 1px;
+  border-radius: 50px;
 }
 
 .nav-item-1:hover{
@@ -299,6 +300,7 @@ a:focus {
   color: #ffffff;
   margin-top: 35px;
   margin-bottom: 45px;
+  border-radius: 50px;
   
 }
 
@@ -409,6 +411,7 @@ a:focus {
   border: 1px solid #14757a;
   color: #ffffff;
   margin-top: 35px;
+  border-radius: 50px;
 }
 
 .discount_section .detail-box a:hover {

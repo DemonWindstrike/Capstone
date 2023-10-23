@@ -43,6 +43,13 @@ document.addEventListener("DOMContentLoaded", function() {
       .then(response => response.json())
       .then(data => {
         console.log(data);
+
+        if(data.success){
+          window.location.href = '/login';
+        } else{
+          console.error('Error en el registro:', data.error);
+          alert('Error en el registro. Verifica tus datos.');
+        }
       })
       .catch(error => {
         console.error('Error:',error);
@@ -54,27 +61,33 @@ document.addEventListener("DOMContentLoaded", function() {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       return emailRegex.test(email);
   }
-  
-    // Inicio de sesión
-    document.getElementById('submit_login').addEventListener('click', function(e) {
-      e.preventDefault();
-  
-      const user = document.getElementById('user').value;
-      const pass = document.getElementById('pass').value;
-  
-      fetch('http://localhost:3000/login', {
-        method: 'POST',
-        headers: {
+}); 
+// Inicio de sesión
+document.getElementById('submit_login').addEventListener('click', async function(e) {
+  e.preventDefault();
+
+  const email = document.getElementById('email-login').value;
+  const pass = document.getElementById('pass-login').value;
+
+  const response = await fetch('http://localhost:3000/login', {
+      method: 'POST',
+      headers: {
           'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({user, pass})
-      })
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
-      })
-      .catch(error => {
-        console.error('Error:', error);
-      });
-    });
+      },
+      body: JSON.stringify({ email, pass })
   });
+
+  const data = await response.json();
+
+  if (data.success) {
+      // Inicio de sesión exitoso, redirige a la página deseada
+      console.log('', data.user);
+      // Puedes redirigir a otra página usando window.location.href o realizar otras acciones
+      window.location.href = '/';
+  } else {
+      // Muestra un mensaje de error
+      console.error('Error en el inicio de sesión:', data.error);
+      alert('Error en el inicio de sesión. Verifica tus credenciales.');
+  }
+
+});

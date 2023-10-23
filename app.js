@@ -9,6 +9,10 @@ app.use(express.json());
 
 app.use('/auth', authRoutes);
 
+//Express validator
+
+
+
 //Invocar doteenv
 const dotenv = require('dotenv');
 dotenv.config({path:'./env/.env'});
@@ -64,6 +68,33 @@ app.post('/register', async (req, res) => {
     });
 });
 
+//Login
+
+app.post('/login', async (req, res) => {
+    const email = req.body.email;
+    const pass = req.body.pass;
+
+    connection.query('SELECT * FROM users WHERE email = ?', [email], async (error, results) => {
+        if (error) {
+            console.log(error);
+            res.status(500).json({ error: 'Error interno del servidor' });
+        } else {
+            if (results.length > 0) {
+                const user = results[0];
+                const match = await bcryptjs.compare(pass, user.pass);
+
+                if (match) {
+                    req.session.user = user; // Guardar información del usuario en la sesión
+                    res.json({ success: true, user: user });
+                } else {
+                    res.status(401).json({ error: 'Contraseña incorrecta' });
+                }
+            } else {
+                res.status(404).json({ error: 'Usuario no encontrado' });
+            }
+        }
+    });
+});
 
 app.listen(3000, () => {
     console.log("Server corriendo en le puerto", href='http://localhost:3000/' );
