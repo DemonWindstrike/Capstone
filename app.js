@@ -51,6 +51,10 @@ app.get("/register", (req, res) => {
     res.render('register')
 });
 
+app.get("/especialistas", (req, res) => {
+    res.render('especialistas')
+});
+
 //Registro
 
 app.post('/register', async (req, res) => {

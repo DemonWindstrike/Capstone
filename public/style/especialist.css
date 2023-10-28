@@ -1,0 +1,108 @@
+.card {
+    position: relative;
+    top: 50px;
+    display: flex;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 10px;
+    height: 230px;
+    background-color: #f5f5f5;
+    border-radius: 20px;
+    margin-left: 200px;
+    margin-right: 200px;
+  }
+  
+  .card img {
+    position: relative;
+    left: 40px;
+    top: 30px;
+    max-width: 150px;
+    max-height: 150px;
+    object-fit: cover;
+    border-radius: 5px 0 0 5px ;
+  }
+  
+  .card-info {
+    flex: 1;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .title-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .card p{
+    position: relative;
+    left: 250px;
+    bottom: 120px;
+    margin: 3px;
+  }
+
+  .title-buttons h3 {
+    position: relative;
+    left: 250px;
+    bottom: 130px;
+    font-size: 20px;
+    color: #333;
+    font-size: x-large;
+  }
+  
+  .buttons button {
+    position: relative;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  #perfil {
+    position: relative;
+    left: 100px;
+    bottom: 130px;
+    height: 50px;
+    width: 150px;
+  }
+
+  #agendar {
+    position: relative;
+    bottom: 55px;
+    right: 53px;
+    height: 50px;
+    width: 150px;
+  }
+
+  .search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 700px;
+    left: 380px;
+    margin: 0 auto; 
+  }
+  
+  #search-input {
+    flex: 1;
+    padding: 10px; 
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 200px;
+  }
+  
+  #search-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin-left: 10px;
+  }
