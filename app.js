@@ -3,7 +3,10 @@ const path = require("path");
 const cors = require('cors');
 const authRoutes = require('./routes/auth');
 const app = express();
-
+const cookieParser = require('cookie-parser');
+const dotenv = require('dotenv');
+const bcryptjs = require('bcryptjs');
+const session = require('express-session');
 // Urluncoded para capturar los datos del formulario
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());
@@ -16,8 +19,15 @@ app.use('/auth', authRoutes);
 
 
 
+
+// ... configuraciones previas de tu app ...
+
+app.use(cookieParser()); // Esto permite que tu aplicación use el middleware de cookie-parser
+
+// ... más configuraciones de tu app ...
+
 //Invocar doteenv
-const dotenv = require('dotenv');
+
 dotenv.config({path:'./env/.env'});
 
 //Directorio Public
@@ -28,10 +38,10 @@ app.set('view engine', 'html');
 app.engine('html', require('ejs').renderFile);
 
 //Invocar bcryptjs
-const bcryptjs = require('bcryptjs');
+
 
 //Var. session
-const session = require('express-session');
+
 app.use(session({
     secret:'secret',
     resave: true,
@@ -53,9 +63,25 @@ app.get("/login", (req, res) => {
 app.get("/register", (req, res) => {
     res.render('register')
 });
+//validacion si el usuario tiene la sesion iniciada
+const checkUserCookie = (req, res, next) => {
+    // Obtén las cookies del usuario
+    const usuario = req.cookies['usuario'];
+    const rol = req.cookies['rol'];
 
-app.get("/especialistas", (req, res) => {
-    res.render('especialistas')
+    // Verifica si las cookies de usuario y rol existen
+    if (usuario && rol) {
+        // Continúa con la ruta si las cookies son válidas
+        next();
+    } else {
+        // Redirecciona si no están presentes o no son válidas
+        res.redirect('/register');
+    }
+};
+
+// Ahora usa la función middleware en tu ruta
+app.get("/especialistas", checkUserCookie, (req, res) => {
+    res.render('especialistas');
 });
 
 //Registro
@@ -64,9 +90,10 @@ app.post('/register', async (req, res) => {
     const user = req.body.user;
     const email = req.body.email;
     const pass = req.body.pass;
-    console.log(user, email, pass);
+    const rol = req.body.rol;
+    console.log(user, email, pass, rol);
     let passwordHash = await bcryptjs.hash(pass, 8);
-    connection.query('INSERT INTO users SET ?', { user: user, email: email, pass: passwordHash }, async (error, result) => {
+    connection.query('INSERT INTO users SET ?', { user: user, email: email, pass: passwordHash, rol: rol }, async (error, result) => {
         if (error) {
             console.log(error);
         } else {
@@ -78,8 +105,7 @@ app.post('/register', async (req, res) => {
 //Login
 
 app.post('/login', async (req, res) => {
-    const email = req.body.email;
-    const pass = req.body.pass;
+    const { email, pass } = req.body;
 
     connection.query('SELECT * FROM users WHERE email = ?', [email], async (error, results) => {
         if (error) {
@@ -91,8 +117,9 @@ app.post('/login', async (req, res) => {
                 const match = await bcryptjs.compare(pass, user.pass);
 
                 if (match) {
-                    req.session.user = user; // Guardar información del usuario en la sesión
-                    res.json({ success: true, user: user });
+                    req.session.user = { ...user }; // Guardar información del usuario en la sesión sin la contraseña
+                    delete req.session.user.pass; // No es buena práctica enviar la contraseña, incluso si está cifrada
+                    res.json({ success: true, user: req.session.user });
                 } else {
                     res.status(401).json({ error: 'Contraseña incorrecta' });
                 }
@@ -102,6 +129,7 @@ app.post('/login', async (req, res) => {
         }
     });
 });
+
 
 app.listen(3000, () => {
     console.log("Server corriendo en le puerto", href='http://localhost:3000/' );

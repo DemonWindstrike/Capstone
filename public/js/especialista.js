@@ -46,29 +46,52 @@ document.addEventListener('DOMContentLoaded', () => {
         cardsContainer.appendChild(card);
       });
     }
-    searchInput.addEventListener('input', () => {
-      const query = searchInput.value.toLowerCase();
+    // searchInput.addEventListener('input', () => {
+    //   const query = searchInput.value.toLowerCase();
   
-      // Filtrar las tarjetas según la búsqueda
-      const filteredData = especialistasData.filter((especialista) => {
-        const especialistaData = `${especialista.nombre_especialista} ${especialista.especialidad} ${especialista.experiencia}`.toLowerCase();
-        return especialistaData.includes(query);
-      });
+    //   // Filtrar las tarjetas según la búsqueda
+    //   const filteredData = especialistasData.filter((especialista) => {
+    //     const especialistaData = `${especialista.nombre_especialista} ${especialista.especialidad} ${especialista.experiencia}`.toLowerCase();
+    //     return especialistaData.includes(query);
+    //   });
   
-      renderCards(filteredData); // Renderiza las tarjetas filtradas
-    });
-    // Manejar la búsqueda
-  searchButton.addEventListener('click', () => {
-    const query = searchInput.value.toLowerCase();
+    //   renderCards(filteredData); // Renderiza las tarjetas filtradas
+    // });
+    
 
-    // Filtrar las tarjetas según la búsqueda
-    const filteredData = especialistasData.filter((especialista) => {
-      const especialistaData = `${especialista.nombre_especialista} ${especialista.especialidad} ${especialista.experiencia}`.toLowerCase();
-      return especialistaData.includes(query);
-    });
-    console.log(query);
+    // Suponiendo que ya tienes definido searchButton y geoInput en alguna parte de tu código:
+const btnBuscar = document.getElementById('searchButton');
+const geoInput = document.getElementById('geoInput');
+const searchinput = document.getElementById('searchInput');
 
-    renderCards(filteredData); // Renderiza las tarjetas filtradas
+btnBuscar.addEventListener('click', () => {
+  const searchText = searchinput.value.toLowerCase();
+  const geoText = geoInput.value.toLowerCase();
+
+  // Filtrar las tarjetas según la búsqueda y la geolocalización
+  const filteredData = especialistasData.filter((especialista) => {
+    const especialistaData = `${especialista.nombre_especialista} ${especialista.especialidad} ${especialista.experiencia}`.toLowerCase();
+    const ubicacionData = especialista.centro_medico.toLowerCase();
+    return especialistaData.includes(searchText); //&& ubicacionData.includes(geoText);
   });
+
+  console.log(searchText); // Puedes quitar esta línea después de las pruebas
+
+  renderCards(filteredData); // Renderiza las tarjetas filtradas
+});
+
+    // Manejar la búsqueda
+  // searchButton.addEventListener('click', () => {
+  //   const query = searchInput.value.toLowerCase();
+
+  //   // Filtrar las tarjetas según la búsqueda
+  //   const filteredData = especialistasData.filter((especialista) => {
+  //     const especialistaData = `${especialista.nombre_especialista} ${especialista.especialidad} ${especialista.experiencia}`.toLowerCase();
+  //     return especialistaData.includes(query);
+  //   });
+  //   console.log(query);
+
+  //   renderCards(filteredData); // Renderiza las tarjetas filtradas
+  // });
 });
   

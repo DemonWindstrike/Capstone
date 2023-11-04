@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function() {
       const email = document.getElementById('email').value; // Actualizado el id
       const user = document.getElementById('user').value; // Actualizado el id
       const pass = document.getElementById('pass').value; // Actualizado el id
-      
+      const rol = document.getElementById('role-selector').value;
       if (!isValidEmail(email)) {
         alert('Por favor, ingresa un correo electrónico válido.');
         return;
@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function() {
           headers: {
               'Content-Type': 'application/json'
           },
-          body: JSON.stringify({ email, user, pass }) // Actualizado para coincidir con los IDs
+          body: JSON.stringify({ email, user, pass, rol }) // Actualizado para coincidir con los IDs
       })
       .then(response => response.json())
       .then(data => {
@@ -80,6 +80,9 @@ document.getElementById('submit_login').addEventListener('click', async function
   const data = await response.json();
 
   if (data.success) {
+    
+      document.cookie = `usuario=${encodeURIComponent(data.user.email)}; path=/`;
+      document.cookie = `rol=${encodeURIComponent(data.user.rol)}; path=/`;
       // Inicio de sesión exitoso, redirige a la página deseada
       console.log('', data.user);
       // Puedes redirigir a otra página usando window.location.href o realizar otras acciones
