@@ -63,6 +63,10 @@ app.get("/login", (req, res) => {
 app.get("/register", (req, res) => {
     res.render('register')
 });
+
+app.get("/perfil", (req, res) => {
+    res.render('perfil')
+});
 //validacion si el usuario tiene la sesion iniciada
 const checkUserCookie = (req, res, next) => {
     // Obtén las cookies del usuario

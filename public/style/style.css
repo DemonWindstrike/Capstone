@@ -201,19 +201,18 @@ a:focus {
 .navbar-brand {
   display: -webkit-box;
   display: -ms-flexbox;
-  display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
 }
 
 .navbar-brand img {
-  width: 40px;
+  width: 53px;
   margin-right: 5px;
 }
 
 .navbar-brand span {
-  font-size: 20px;
+  font-size: 25px;
   font-weight: 700;
   color: #ffffff;
   margin-top: 5px;
@@ -276,7 +275,7 @@ a:focus {
 }
 
 .slider_section .detail-box h1 {
-  color: #2c2c2c;
+  color: #131212;
 }
 
 .slider_section .detail-box h1 span {
@@ -299,6 +298,13 @@ a:focus {
   margin-bottom: 45px;
   border-radius: 50px;
   
+}
+
+header {
+  background: #2c2c2c;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
 }
 
 .slider_section .detail-box a:hover {

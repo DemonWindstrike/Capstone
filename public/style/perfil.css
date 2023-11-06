@@ -1,0 +1,226 @@
+/* Estilos Generales */
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background: #f4f4f4;
+  }
+  
+  /* Cabecera */
+  header {
+    background: #2c2c2c;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  /* Sección de contenido */
+  section {
+    margin: 20px;
+    padding: 20px;
+    background: #f4f4f4;
+    
+  }
+  
+  /* Artículo / Perfil */
+  article {
+    margin-bottom: 20px;
+    
+  }
+  
+  article img {
+    float: left; /* La imagen flota a la izquierda, el texto fluye a la derecha */
+    margin-right: 20px; /* Espacio entre la imagen y el texto */
+    max-width: 35%;
+    border-radius: 5%; /* Hace la imagen redonda */
+  }
+  
+  /* Detalles del especialista */
+  h2 {
+    position: relative;
+    left: 25px;
+    font-size: 40px;
+    color: #333;
+    overflow: hidden; /* Asegura que el contenedor del texto respete la flotación de la imagen */
+    
+  }
+  
+  p {
+    position: relative;
+    top: 50px;
+    left: 30px;
+    font-size: 20px;
+    margin: 10px 10px;
+    overflow: hidden; /* Asegura que el contenedor del texto respete la flotación de la imagen */
+  }
+  
+  /* Estilos para el pie de página/calendario */
+  footer {
+    position: relative;
+    top: 300px;
+    background: #333;
+    color: #fff;
+    text-align: center;
+    height: 20px;
+    padding: 1px;
+    position: relative;
+  }
+
+  .profile-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin: 20px;
+  }
+  
+  .doctor-info h1 {
+    margin-top: 0;
+    color: #333;
+  }
+  
+  .doctor-info p {
+    margin: 5px 0;
+    color: #666;
+  }
+  
+  .doctor-info p strong{
+    position: relative;
+    color: #000;
+  }
+  
+
+  /* calendar section*/
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px;
+  }
+  
+  #calendar-container {
+    flex: 1;
+    max-width: 600px; /* Ajusta este valor como veas conveniente */
+    margin-right: 20px; /* Espacio entre el calendario y las horas disponibles */
+  }
+  
+  #calendar-controls {
+    position: relative;
+    background-color: rgb(27, 137, 141);
+    top: 40px;
+    border-radius: 30px;
+    height: 45.5px;
+    right: 320px;
+    width: 970px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  #calendar-controls button {
+    top: 50px;
+    padding: 5px 20px;
+    cursor: pointer;
+    background-color: rgb(27, 137, 141);
+    border: none;
+    color: white;
+    border-radius: 30px;
+  }
+  
+  #calendar-controls button:hover {
+    background-color: #137f92;
+  }
+
+  .next-month  {
+    padding: 5px 20px;
+    cursor: pointer;
+    background-color: rgb(27, 137, 141);
+    border: none;
+    color: white;
+    border-radius: 200px;
+
+  }
+
+  .prev-month  {
+    padding: 5px 20px;
+    cursor: pointer;
+    background-color: rgb(27, 137, 141);
+    border: none;
+    color: white;
+    border-radius: 200px;
+  }
+  
+  
+  #calendar {
+    position: relative;
+    padding: 20px;
+    width: 940px;
+    right: 885px;
+    top: 100px;
+    background-color: white;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* 7 days of the week */
+    gap: 5px;
+    border-radius: 20px;
+  }
+  
+  .weekday-header {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .day {
+    padding: 10px;
+    background: #e7e7e7;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .day:hover {
+    background-color: rgb(27, 137, 141);
+  }
+  
+  #available-times {
+    flex: 1;
+    max-width: 300px; /* Ajusta este valor como veas conveniente */
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border-radius: 5px;
+  }
+  
+  .timeSlot {
+    position: relative;
+    right: 750px;
+    top: 100px;
+    padding: 5px;
+    background-color: #007bff;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .timeSlot:hover {
+    background-color: #0056b3;
+  }
+  
+  #month-year {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+  }
+
+
+
+
+  

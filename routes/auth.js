@@ -14,4 +14,9 @@ router.post('/especialistas', (req, res) => {
   // Lógica para busqueda de especialista
 });
 
+router.post('/perfil', (req, res) => {
+  // Lógica para ver perfil
+});
+
+
 module.exports = router;
