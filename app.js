@@ -64,8 +64,11 @@ app.get("/register", (req, res) => {
     res.render('register')
 });
 
-app.get("/perfil", (req, res) => {
-    res.render('perfil')
+app.get('/perfil/:id', (req, res) => {
+    const id = req.params.id;
+    // Aquí podrías realizar alguna lógica adicional si es necesario
+    // Por ahora, simplemente devolvemos el ID como confirmación
+    res.render('perfil');
 });
 //validacion si el usuario tiene la sesion iniciada
 const checkUserCookie = (req, res, next) => {
