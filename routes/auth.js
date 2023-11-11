@@ -18,5 +18,8 @@ router.post('/perfil', (req, res) => {
   // Lógica para ver perfil
 });
 
+router.post('/reservahora', (req, res) => {
+  // Lógica para reservar hora
+});
 
 module.exports = router;

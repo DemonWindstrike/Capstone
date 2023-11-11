@@ -1,0 +1,152 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+}
+
+.container {
+    background-color: #fff;
+    padding: 20px;
+    width: 100%;
+    max-width: 600px;
+    margin: auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+}
+
+.progress-bar {
+    background-color: #fff;
+    display: flex;
+    flex-direction: row; /* Esto asegura que los elementos dentro estén en fila horizontal */
+    align-items: center;
+    position: relative;
+    margin: 20px 0;
+}
+
+.progress-bar::before {
+    content: '';
+    position: absolute;
+    top: 50%; /* Ajusta la línea al centro vertical de los círculos */
+    transform: translateY(-50%); /* Centra la línea respecto a su posición top */
+    height: 2px;
+    width: 100%;
+    background-color: #ddd;
+    z-index: 0;
+}
+
+.step {
+    text-align: center;
+    line-height: 30px;
+    color: #5F9EA0; /* Cambié el color del número para un azul-verdoso suave */
+    background-color: lightgrey;
+    width: 30px; /* Mantiene el tamaño original del círculo */
+    height: 30px; /* Mantiene el tamaño original del círculo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 35px; /* Este margen puede ajustarse si se desea más espacio entre los círculos */
+    border-radius: 50%;
+    font-weight: bold; /* Hace el número más audaz */
+    font-size: 1.2em; /* Aumenta el tamaño de la fuente para mejorar la visibilidad */
+    border: 2px solid #ddd; /* Mantiene el borde como en el diseño original */
+    position: relative; /* Necesario para el posicionamiento absoluto de ::before */
+    z-index: 1;
+}
+.step.active {
+    border-color: rgb(41, 142, 155); /* Mantenemos el color del borde del círculo activo como en el diseño original */
+}
+
+.step.active::after {
+    content: '';
+    width: 50%; /* Establece el tamaño del círculo interior como un porcentaje del padre */
+    height: 50%; /* Establece el tamaño del círculo interior como un porcentaje del padre */
+    background-color: #4CAF50;
+    border-radius: 50%;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Esto centrará el círculo interior tanto vertical como horizontalmente */
+}
+
+.step:first-child::after {
+    background: none;
+}
+
+.form-section h1 {
+    text-align: center;
+    color: #333;
+}
+
+.step-text {
+    text-align: center;
+    font-size: 1em;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 5px;
+}
+
+select, input {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+button {
+    background-color: #4ca8af;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #1dc9c9;
+}
+
+/* Estilos para ajustar el tamaño y la separación de los pasos (círculos) */
+.progress-bar {
+    counter-reset: step;
+}
+
+.step {
+    text-align: center;
+    line-height: 30px;
+    color: white;
+    background-color: lightgrey;
+}
+
+.step:before {
+    /* ... */
+    content: counter(step);
+    counter-increment: step;
+    width: 22px; /* Ajustado al tamaño del círculo */
+    height: 22px; /* Ajustado al tamaño del círculo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    border-radius: 50%;
+    background-color: #ddd; /* Fondo de los números (círculos) */
+    color: #5F9EA0; /* Color de los números */
+    font-size: 1.2em; /* Aumenta el tamaño de la fuente */
+    font-weight: bold; /* Hace el número más audaz */
+    /* ... */
+}
+
+.step.active:before {
+    background-color: #22b9ad; /* Color del círculo activo */
+    color: white; /* Color del número dentro del círculo activo para contraste */
+}

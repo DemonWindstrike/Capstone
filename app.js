@@ -70,6 +70,10 @@ app.get('/perfil/:id', (req, res) => {
     // Por ahora, simplemente devolvemos el ID como confirmación
     res.render('perfil');
 });
+
+app.get("/reservahora", (req, res) => {
+    res.render('reservahora')
+});
 //validacion si el usuario tiene la sesion iniciada
 const checkUserCookie = (req, res, next) => {
     // Obtén las cookies del usuario
