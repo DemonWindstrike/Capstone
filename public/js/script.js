@@ -88,7 +88,7 @@ document.getElementById('submit_login').addEventListener('click', async function
       // Puedes redirigir a otra página usando window.location.href o realizar otras acciones
       window.location.href = '/';
   } else {
-      // Muestra un mensaje de error
+      // Muestra un mensaje de error en modal o texto en rojo bajo los inputs
       console.error('Error en el inicio de sesión:', data.error);
       alert('Error en el inicio de sesión. Verifica tus credenciales.');
   }

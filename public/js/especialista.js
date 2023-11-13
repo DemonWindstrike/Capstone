@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="title-buttons">
             <h3>${paciente.nombre_especialista}</h3>
             <div class="buttons">
-              <button href="http://localhost:3003/perfil/${paciente.id_especialista}" id="perfil"><a style='color:white;' href="http://localhost:3003/perfil/${paciente.id_especialista}">Ver Perfil</a></button>
+              <button id="perfil"><a style='color:white;' href="http://localhost:3003/perfil/${paciente.id_especialista}">Ver Perfil</a></button>
               <button id="agendar">Agendar hora</button>
           </div>
         </div>
