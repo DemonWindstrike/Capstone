@@ -69,7 +69,7 @@ document.getElementById('submit_login').addEventListener('click', async function
   const email = document.getElementById('email-login').value;
   const pass = document.getElementById('pass-login').value;
 
-  const response = await fetch('http://localhost:3000/login', {
+  const response = await fetch('http://localhost:3003/login', {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json'

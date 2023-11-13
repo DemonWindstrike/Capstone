@@ -69,7 +69,15 @@
     border-radius: 5px;
     cursor: pointer;
   }
-
+  .perfil a {
+    position: relative;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
   #perfil {
     position: relative;
     left: 280px;
