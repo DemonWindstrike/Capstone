@@ -5,6 +5,15 @@ body, html {
   font-family: 'Arial', sans-serif;
   background-color:rgb(222, 235, 235);
 }
+.fc-scroller {
+  overflow: hidden !important;
+}
+
+#calendar-container {
+  width: 70%; /* o el ancho que prefieras */
+  margin: 0 auto; /* esto centra el calendario horizontalmente */
+  height: 'auto'
+}
 
 /* Contenedor del Perfil */
 .profile-container {

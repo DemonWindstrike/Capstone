@@ -32,7 +32,8 @@ function mostrarEspecialista(data) {
     <p>Años de experiencia: ${data.experiencia}</p>
     <p>Centro medico: ${data.centro_medico}</p> 
   </div>
-</div>`;
+</div>
+`;
 }
 
 function escapeHTML(unsafeStr) {
