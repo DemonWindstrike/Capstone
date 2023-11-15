@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title style="left: 225px;">MediHub</title>
+
+  <!-- slider stylesheet -->
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" />
+
+  <!-- font awesome style -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="/style/bootstrap.css" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700|Roboto:400,700&display=swap" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="/style/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="/style/responsive.css" rel="stylesheet" />
+
+  <link href="/style/portalpatient.css" rel="stylesheet" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.0.9/css/boxicons.min.css">
+</head>
+
+<body>
+  <div class="hero_area">
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container pt-3">
+          <a class="navbar-brand" href="index.html">
+            <img src="images/logo.png" alt="">
+            <span>
+              MediHub
+            </span>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="d-flex  flex-column flex-lg-row align-items-center w-100 justify-content-between">
+              <ul class="navbar-nav  ">
+                <li class="nav-item active">
+                  <a class="nav-link" href="/">Inicio <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="buy.html"> Sobre Nosotros </a>
+                </li>
+              
+                <li class="nav-item-1">
+                  <a class="nav-link" href="/especialistas">Nuestros especialistas</a>
+                </li>
+                
+              </ul>
+             
+              <div class="login_btn-contanier ml-0 ml-lg-5">
+                <a href="/register">
+                  <img src="images/user.png" alt="">
+                  <span>
+                    Iniciar Sesion / Registrarse
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </nav>
+      </div>
+    </header>
+    <br><br><br><br>
+
+    <div id="specialtySearchContainer" style="display: block;">
+    <div class="container">
+        <div class="progress-bar">
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step active"></div>
+            <div class="step"></div>
+        </div>
+        <div class="search-section">
+            <h2>Reserva de hora</h2>
+            <p>Paso 3: Seleccionar especialidad o profesional</p>
+            <div class="tab-container">
+                <div id="tabSpecialty" class="tab active" onclick="moveHighlight('specialty')">Búsqueda por especialidad</div>
+                <div id="tabProfessional" class="tab" onclick="moveHighlight('professional')">Búsqueda por profesional</div>
+                <div class="highlight"></div>
+            </div>
+            
+            <form id="search-form">
+                <br>
+                <div class="area-container">
+                    <label class="area-label">Área</label>
+                    <div class="checkbox-container">
+                      <input type="checkbox" id="medica" name="area" class="checkbox-input" checked>
+                      <label for="medica" class="checkbox-label medica">
+                        <i class='bx bx-check'></i> <!-- Boxicons icon for check -->
+                        Médica
+                      </label>
+                  
+                      <input type="checkbox" id="ges" name="area" class="checkbox-input">
+                      <label for="ges" class="checkbox-label ges">
+                        <i class='bx bx-heart'></i> <!-- Boxicons icon for heart -->
+                        GES
+                      </label>
+                    </div>
+                  </div>
+                <div class="input-group">
+                    <input type="text" id="region" name="region" placeholder="Buscar región o centro">
+                    <input type="text" id="query" name="query" placeholder="Escribe aquí tu búsqueda">
+                </div>
+                <br>
+                <a href="/horas" class="button">BUSCAR HORAS</a>
+            </form>
+            <br>
+            <button onclick="history.back()" class="back-button">VOLVER</button>
+        </div>
+    </div>
+</div>
+
+<div id="professionalSearchContainer" style="display: none;">
+    <div class="container">
+        <div class="progress-bar">
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step active"></div>
+            <div class="step"></div>
+        </div>
+        <div class="search-section">
+            <h2>Reserva de hora</h2>
+            <p>Paso 3: Seleccionar especialidad o profesional</p>
+            <div class="tab-container">
+                <div id="tabSpecialty" class="tab" onclick="moveHighlight('specialty')">Búsqueda por especialidad</div>
+                <div id="tabProfessional" class="tab active" onclick="moveHighlight('professional')">Búsqueda por profesional</div>
+                <div class="highlight"></div>
+            </div>
+            
+            <form id="search-form">
+                <br>
+                <div class="area-container">
+                    <label class="area-label">Área</label>
+                    <div class="checkbox-container">
+                      <input type="checkbox" id="medica" name="area" class="checkbox-input" checked>
+                      <label for="medica" class="checkbox-label medica">
+                        <i class='bx bx-check'></i> <!-- Boxicons icon for check -->
+                        Médica
+                      </label>
+                  
+                      <input type="checkbox" id="ges" name="area" class="checkbox-input">
+                      <label for="ges" class="checkbox-label ges">
+                        <i class='bx bx-heart'></i> <!-- Boxicons icon for heart -->
+                        GES
+                      </label>
+                    </div>
+                  </div>
+                <div class="input-group">
+                    <input type="text" id="region" name="region" placeholder="Buscar región o centro">
+                    <input type="text" id="query" name="query" placeholder="Escribe aquí tu búsqueda">
+                    <input type="text" id="query" name="query" placeholder="consulta">
+                </div>
+                <br>
+                <button type="submit">BUSCAR HORAS</button>
+            </form>
+            <br>
+            <button onclick="history.back()" class="back-button">VOLVER</button>
+        </div>
+    </div>
+</div>
+    <script src="/js/portalpatient.js"></script>
+</body>
+</html>

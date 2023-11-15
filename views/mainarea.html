@@ -13,9 +13,6 @@
   <meta name="author" content="" />
 
   <title style="left: 225px;">MediHub</title>
-  <link rel="icon" sizes="16x16" href="/images/logo16x16.png">
-  <link rel="icon" sizes="32x32" href="/path/to/favicon-32x32.png">
-  <link rel="icon" sizes="48x48" href="/path/to/favicon-48x48.png">
 
   <!-- slider stylesheet -->
   <link rel="stylesheet" type="text/css"
@@ -30,16 +27,13 @@
 
   <!-- fonts style -->
   <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700|Roboto:400,700&display=swap" rel="stylesheet">
-  <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/lib/main.min.css' rel='stylesheet' />
-  <script src='https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@6.1.9/index.global.min.js'></script>
-  <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/lib/main.min.js'></script>
-  <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/lib/locales/es.js'></script>
+
   <!-- Custom styles for this template -->
   <link href="/style/style.css" rel="stylesheet" />
   <!-- responsive style -->
   <link href="/style/responsive.css" rel="stylesheet" />
 
-  <link href="/style/perfil.css" rel="stylesheet" />
+  <link href="/style/mainarea.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -89,19 +83,72 @@
         </nav>
       </div>
     </header>
-    <br>
-
-<!--- blog section --->
-<div>
-  <div id="especialista" class="profile-container">    
-</div>
-
-<!--calendar section-->
-</div><br>
-<div id="calendar-container">
-  <div id="calendar"></div>
-</div>
-<br>
+    <br><br><br><br>
+    <div class="main-container">
+      <div class="container">
+          <div class="progress-bar">
+              <div class="step"></div>
+              <div class="step active"></div>
+              <div class="step"></div>
+              <div class="step"></div>
+          </div>
+          <div class="main-container">
+            <h2>¿Qué servicio necesita agendar?</h2>
+            <div class="service-grid">
+                <div class="service-card consultas">
+                  <a href="/portalpatient">
+                    <img src="images/medico.png" alt="Consultas">
+                    <p>Consultas</p>
+                  </a>
+                </div>
+                <div class="service-card dental">
+                  <a href="/login"> 
+                    <img src="images/diente.png" alt="Dental">
+                    <p>Dental</p>
+                  </a>
+                </div>
+                <div class="service-card imagenes">
+                  <a href="/login">
+                    <img src="images/imagen.png" alt="Imágenes y Procedimientos">
+                    <p>Imágenes y Procedimientos</p>
+                  </a>
+                </div>
+                <div class="service-card telemedicina">
+                  <a href="/login">
+                    <img src="images/telemedicina.png" alt="Telemedicina">
+                    <p>Telemedicina</p>
+                  </a>
+                </div>
+                <div class="service-card kinesiologia">
+                  <a href="/login">
+                    <img src="images/kine.png" alt="Kinesiología">
+                    <p>Kinesiología</p>
+                  </a>
+                </div>
+                <div class="service-card laboratorio">
+                  <a href="/login">
+                    <img src="images/toma.png" alt="Laboratorio y Toma de Muestras">
+                    <p>Laboratorio y Toma de Muestras</p>
+                  </a>
+                </div>
+                <div class="service-card vacunatorio">
+                  <a href="/login">
+                    <img src="images/vacuna.png" alt="Vacunatorio">
+                    <p>Vacunatorio</p>
+                  </a>
+                </div>
+                <div class="service-card donacion">
+                  <a href="/login">
+                    <img src="images/sangre.png" alt="Donación de Sangre">
+                    <p>Donación de Sangre</p>
+                  </a>
+                </div>
+            </div>
+        </div>
+          <button onclick="history.back()">Volver al paso anterior</button>
+      </div>
+  </div>
+<br><br>
   <footer>
     <section class="info_section layout_padding2">
       <div class="container">
@@ -170,6 +217,5 @@
       </div>
     </section>
   </footer>
-  <script src="/js/perfil.js"></script>
-  <script src="/js/calendario.js"></script>
 </body>
+</html>

@@ -1,0 +1,408 @@
+body {
+    font-family: Arial, sans-serif;
+}
+.container {
+    width: 40%;
+    margin: auto;
+    padding: 20px;
+    background-color: #e9e9e9e1;
+    border-radius: 20px;
+}
+.steps-indicator {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.step {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: lightgrey;
+    margin: 0 5px;
+}
+
+.checkbox-group {
+    margin: 10px 0;
+}
+.input-group {
+    margin: 10px 0;
+}
+input[type="checkbox"] {
+    margin-right: 5px;
+}
+input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+}
+button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: green;
+    color: rgb(40, 177, 187);
+    cursor: pointer;
+}
+
+.back-button {
+    padding: 10px 20px; /* Ajusta el padding para cambiar el tamaño */
+    background-color: #4ca8af; /* El color de fondo del botón */
+    border: none; /* Remueve el borde */
+    border-radius: 5px; /* Bordes redondeados */
+    font-weight: bold; /* Hace que el texto sea negrita */
+    cursor: pointer; /* Cambia el cursor a una mano para indicar que es clickeable */
+    outline: none; /* Remueve el borde al hacer foco en el botón */
+    transition: background-color 0.3s ease; /* Transición suave para el color de fondo */
+}
+
+.back-button:hover {
+    background-color: #1dc9c9; /* Cambia el color de fondo al pasar el ratón por encima */
+}
+
+
+.progress-bar {
+    background-color: #ffffff00;
+    display: flex;
+    flex-direction: row; /* Esto asegura que los elementos dentro estén en fila horizontal */
+    align-items: center;
+    position: relative;
+    margin: 20px 0;
+    bottom: 57px;
+}
+
+.progress-bar::before {
+    content: '';
+    position: absolute;
+    top: 50%; /* Ajusta la línea al centro vertical de los círculos */
+    transform: translateY(-50%); /* Centra la línea respecto a su posición top */
+    height: 2px;
+    width: 100%;
+    background-color: #ddd;
+    z-index: 0;
+}
+
+.step {
+    text-align: center;
+    line-height: 30px;
+    color: #5F9EA0; /* Cambié el color del número para un azul-verdoso suave */
+    background-color: lightgrey;
+    width: 30px; /* Mantiene el tamaño original del círculo */
+    height: 30px; /* Mantiene el tamaño original del círculo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 35px; /* Este margen puede ajustarse si se desea más espacio entre los círculos */
+    border-radius: 50%;
+    font-weight: bold; /* Hace el número más audaz */
+    font-size: 1.2em; /* Aumenta el tamaño de la fuente para mejorar la visibilidad */
+    border: 2px solid #ddd; /* Mantiene el borde como en el diseño original */
+    position: relative; /* Necesario para el posicionamiento absoluto de ::before */
+    z-index: 1;
+}
+.step.active {
+    border-color: rgb(41, 142, 155); /* Mantenemos el color del borde del círculo activo como en el diseño original */
+}
+
+.step.active::after {
+    content: '';
+    width: 50%; /* Establece el tamaño del círculo interior como un porcentaje del padre */
+    height: 50%; /* Establece el tamaño del círculo interior como un porcentaje del padre */
+    border-radius: 50%;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Esto centrará el círculo interior tanto vertical como horizontalmente */
+}
+
+.step:first-child::after {
+    background: none;
+}
+
+.form-section h1 {
+    text-align: center;
+    color: #333;
+}
+
+.step-text {
+    text-align: center;
+    font-size: 1em;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 5px;
+}
+
+select, input {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #00B4CC; /* El color de fondo del botón */
+    color: white; /* El color del texto del botón */
+    text-align: center;
+    text-decoration: none; /* Elimina el subrayado del enlace */
+    font-weight: bold;
+    border-radius: 25px; /* El radio de la curvatura del borde */
+    transition: background-color 0.3s; /* Efecto suave al cambiar color de fondo */
+}
+
+.button:hover {
+    background-color: #0095A8; /* Color de fondo al pasar el ratón por encima */
+}
+
+/* Estilos para ajustar el tamaño y la separación de los pasos (círculos) */
+.progress-bar {
+    background-color: #ffffff00;
+    display: flex;
+    flex-direction: row; /* Esto asegura que los elementos dentro estén en fila horizontal */
+    align-items: center;
+    position: relative;
+    margin: 20px 0;
+    bottom: 54px;
+}
+
+.progress-bar::before {
+    content: '';
+    position: absolute;
+    top: 50%; /* Ajusta la línea al centro vertical de los círculos */
+    transform: translateY(-50%); /* Centra la línea respecto a su posición top */
+    height: 2px;
+    width: 100%;
+    background-color: #ddd;
+    z-index: 0;
+}
+
+.step {
+    text-align: center;
+    line-height: 30px;
+    color: #5F9EA0; /* Cambié el color del número para un azul-verdoso suave */
+    background-color: lightgrey;
+    width: 30px; /* Mantiene el tamaño original del círculo */
+    height: 30px; /* Mantiene el tamaño original del círculo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 35px; /* Este margen puede ajustarse si se desea más espacio entre los círculos */
+    border-radius: 50%;
+    font-weight: bold; /* Hace el número más audaz */
+    font-size: 1.2em; /* Aumenta el tamaño de la fuente para mejorar la visibilidad */
+    border: 2px solid #ddd; /* Mantiene el borde como en el diseño original */
+    position: relative; /* Necesario para el posicionamiento absoluto de ::before */
+    z-index: 1;
+}
+.step.active {
+    border-color: rgb(41, 142, 155); /* Mantenemos el color del borde del círculo activo como en el diseño original */
+}
+
+.step.active::after {
+    content: '';
+    width: 50%; /* Establece el tamaño del círculo interior como un porcentaje del padre */
+    height: 50%; /* Establece el tamaño del círculo interior como un porcentaje del padre */
+
+    border-radius: 50%;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Esto centrará el círculo interior tanto vertical como horizontalmente */
+}
+
+.step:first-child::after {
+    background: none;
+}
+
+.progress-bar {
+    counter-reset: step;
+}
+
+.step {
+    text-align: center;
+    line-height: 30px;
+    color: white;
+    background-color: lightgrey;
+}
+
+.step:before {
+    /* ... */
+    content: counter(step);
+    counter-increment: step;
+    width: 22px; /* Ajustado al tamaño del círculo */
+    height: 22px; /* Ajustado al tamaño del círculo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    border-radius: 50%;
+    background-color: #ddd; /* Fondo de los números (círculos) */
+    color: #5F9EA0; /* Color de los números */
+    font-size: 1.2em; /* Aumenta el tamaño de la fuente */
+    font-weight: bold; /* Hace el número más audaz */
+    /* ... */
+}
+
+.step.active:before {
+    background-color: #22b9ad; /* Color del círculo activo */
+    color: white; /* Color del número dentro del círculo activo para contraste */
+}
+
+.search-by {
+    display: flex;
+    background-color: #8a888875; /* Color de fondo gris para toda la barra */
+    border-radius: 25px; /* Bordes redondeados para la barra */
+    padding: 5px; /* Espaciado interno para la barra */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave para la barra */
+    align-items: center; /* Centra los botones verticalmente */
+    justify-content: center; /* Alinea los botones al inicio de la barra */
+}
+
+
+.search-by-category, .search-by-professional {
+    position: relative;
+    padding: 10px 20px;
+    border: 1px solid transparent; /* Borde transparente para los botones */
+    border-radius: 20px; /* Bordes redondeados para los botones */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    left: 40px;
+    min-width: 120px;
+    margin-right: 90px; /* Espacio entre los botones */
+    background-color: transparent; /* Fondo transparente inicial para los botones */
+    font-weight: 600;
+    text-shadow: 0 0 1px rgba(0,0,0,0.3);
+    color: #666;
+}
+
+.search-by-category.active, .search-by-professional.active {
+    padding: 10px 30px;
+    min-width: 120px;
+    background-color: #ffffff; /* Fondo blanco para el botón activo */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave para el botón activo */
+    font-weight: 600;
+    color: #333;
+}
+
+/* Estilos para cuando se pasa el mouse sobre los botones */
+.search-by-category:hover, .search-by-professional:hover {
+    background-color: #e6e6e6; /* Fondo claro para el botón al pasar el mouse */
+}
+
+#search-by-professional {
+    padding: 10px 30px
+}
+
+#search-by-professional.active {
+    padding: 10px 30px;
+}
+
+.tab-container {
+    position: relative;
+    background-color: #b9b7b7a4; /* Color de fondo gris para la barra */
+    border-radius: 25px;
+    padding: 5px;
+    display: flex;
+    overflow: hidden; /* Asegúrate de que el highlight no se desborde */
+}
+
+.tab {
+    flex: 1; /* Los elementos ocupan el espacio de forma equitativa */
+    text-align: center;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    position: relative; /* Importante para el z-index */
+    z-index: 1;
+}
+
+.highlight {
+    position: absolute;
+    background-color: #ffffff; /* Fondo blanco */
+    border-radius: 20px;
+    transition: left 0.3s ease, width 0.3s ease; /* Anima el cambio de posición y tamaño */
+    z-index: 0; /* Detrás de los tabs */
+    top: 5px;
+    height: calc(100% - 10px); /* Ajusta la altura al padding de .tab-container */
+    width: calc(50% - 10px); /* Asume dos tabs con ancho igual */
+    pointer-events: none; /* Evita que el highlight intercepte clics */
+}
+
+
+
+/*Area GES*/
+
+.area-container {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .area-label {
+    margin-bottom: 10px;
+    color: #6c757d;
+  }
+  
+  .checkbox-container {
+    display: flex;
+  }
+  
+  .checkbox-input {
+    display: none; /* Oculta el checkbox real */
+  }
+  
+  .checkbox-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 20px;
+    transition: background-color 0.3s;
+    border: 2px solid transparent;
+  }
+  
+  /* Estilos para cuando el checkbox está seleccionado */
+  .checkbox-input:checked + .checkbox-label {
+    background-color: #4CAF50;
+    color: white;
+    border-color: #4CAF50;
+  }
+  
+  /* Estilos específicos para los iconos de Boxicons */
+  .checkbox-label .bx {
+    font-size: 1.2em; /* Tamaño del icono */
+    margin-right: 5px;
+  }
+  
+  /* Colores de fondo para los labels cuando no están seleccionados */
+  .medica {
+    background-color: #effcf6;
+    color: #4CAF50;
+  }
+  
+  .ges {
+    background-color: #e8f4f8;
+    color: #5c7cfa;
+  }
+  
+  /* Estilos para cuando el checkbox no está seleccionado */
+  .checkbox-input:not(:checked) + .checkbox-label {
+    background-color: #f0f0f0;
+    color: #6c757d;
+  }
+  

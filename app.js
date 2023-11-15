@@ -64,6 +64,18 @@ app.get("/register", (req, res) => {
     res.render('register')
 });
 
+app.get("/mainarea", (req, res) => {
+    res.render('mainarea')
+});
+
+app.get("/horas", (req, res) => {
+    res.render('horas')
+});
+
+app.get("/portalpatient", (req, res) => {
+    res.render('portalpatient')
+});
+
 app.get('/perfil/:id', (req, res) => {
     const id = req.params.id;
     // Aquí podrías realizar alguna lógica adicional si es necesario

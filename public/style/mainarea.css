@@ -1,17 +1,76 @@
+/* Estilos específicos para cada tipo de servicio */
+.consultas { background-color: #009688; }
+.dental { background-color: #00BCD4; }
+.imagenes { background-color: #4CAF50; }
+.telemedicina { background-color: #8BC34A; }
+.kinesiologia { background-color: #CDDC39; }
+.laboratorio { background-color: #dbcb34; }
+.vacunatorio { background-color: #FFC107; }
+.donacion { background-color: #FF9800; }
+
+
 body {
     font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
     margin: 0;
+    background: #f4f4f4;
 }
 
-.container {
-    background-color: #fff;
-    padding: 20px;
-    width: 100%;
+.main-container {
     max-width: 600px;
-    margin: auto;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 20px;
+    margin: 10px auto;
+    text-align: center;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+}
+
+h2 {
+    position: relative;
+    bottom: 30px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.service-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.service-card img {
+    transform: scale(2);
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+
+
+button {
+    position: relative;
+    right: 150px;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #2dbbc0;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px; /* Bordes redondeados para el botón */
+}
+
+button:hover {
+    background-color: #4583a0;
 }
 
 .progress-bar {
@@ -61,7 +120,7 @@ body {
     content: '';
     width: 50%; /* Establece el tamaño del círculo interior como un porcentaje del padre */
     height: 50%; /* Establece el tamaño del círculo interior como un porcentaje del padre */
-    background-color: #4CAF50;
+
     border-radius: 50%;
     display: block;
     position: absolute;
@@ -74,50 +133,6 @@ body {
     background: none;
 }
 
-.form-section h1 {
-    text-align: center;
-    color: #333;
-}
-
-.step-text {
-    text-align: center;
-    font-size: 1em;
-    color: #666;
-    margin-bottom: 20px;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-}
-
-label {
-    margin-bottom: 5px;
-}
-
-select, input {
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 1em;
-}
-
-button {
-    background-color: #4ca8af;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-button:hover {
-    background-color: #1dc9c9;
-}
-
-/* Estilos para ajustar el tamaño y la separación de los pasos (círculos) */
 .progress-bar {
     counter-reset: step;
 }
@@ -151,3 +166,35 @@ button:hover {
     background-color: #22b9ad; /* Color del círculo activo */
     color: white; /* Color del número dentro del círculo activo para contraste */
 }
+
+.service-card a {
+    display: block; /* Hace que el enlace llene el contenedor .service-card */
+    text-decoration: none; /* Elimina el subrayado del enlace */
+    color: inherit; /* Mantiene el color del texto como está definido en .service-card */
+  }
+  
+  .service-card a img {
+    display: block; /* Mantiene la imagen como un bloque, lo que evita que se añadan espacios alrededor */
+    width: 100%; /* Opcional: si deseas que la imagen llene todo el ancho del .service-card */
+    height: auto; /* Mantiene la relación de aspecto de la imagen */
+  }
+
+  .service-card:hover {
+    transform: scale(1.05); /* Hace que la tarjeta sea un 5% más grande */
+    background-color: rgba(255, 255, 255, 0.5); /* Cambia el color de fondo al pasar el mouse */
+    opacity: 0.5;
+    
+  }
+
+
+@media (max-width: 768px) {
+    .service-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .service-grid {
+        grid-template-columns: 1fr;
+    }
+} 

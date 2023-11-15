@@ -22,4 +22,17 @@ router.post('/reservahora', (req, res) => {
   // Lógica para reservar hora
 });
 
+router.post('/mainarea', (req, res) => {
+  // Lógica para reservar hora
+});
+
+router.post('/horas', (req, res) => {
+  // Lógica para reservar hora
+});
+
+
+router.post('/portalpatient', (req, res) => {
+  // Lógica para reservar hora
+});
+
 module.exports = router;
