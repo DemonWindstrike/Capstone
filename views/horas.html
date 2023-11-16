@@ -85,35 +85,42 @@
     </header>
     <br><br><br><br>
 
-    <div class="container">
-      <div class="doctor-selected">
-          <h2>Médico Seleccionado</h2>
-          <img src="doctor-image.jpg" alt="Carolina Andrea Ibarra Molina" class="doctor-image">
-          <h3>Carolina Andrea Ibarra Molina</h3>
-          <p>MEDICINA GENERAL ADULTO</p>
-          <p>RedSalud Maipú</p>
+    <div class="card">
+      <img src="images/medico1.jpg" alt="Doctor" class="card-image">
+      <div class="card-content">
+        <h2 class="doctor-name">Carolina Andrea Ibarra Molina</h2>
+        <p class="doctor-specialty">MEDICINA GENERAL ADULTO</p>
+        <p class="clinic-name">RedSalud Maipú</p>
       </div>
-  
-      <div class="appointment-section">
-          <div class="date-selector">
-              <span class="back-arrow">&larr;</span>
-              <h3>martes 28 noviembre</h3>
-          </div>
-          <div class="time-slots">
-              <!-- Repite estos botones para cada hora disponible -->
-              <button class="time-slot">Reservar 08:30</button>
-              <!-- ... más botones ... -->
-          </div>
-          <button id="back-button">VOLVER A RESULTADOS</button>
-      </div>
-  
-      <div class="other-dates">
-          <h3>Otras fechas disponibles</h3>
-          <!-- Asegúrate de incluir un widget de calendario o generar las fechas con JS -->
-      </div>
-  </div>
-    
-    <script src="/js/horas.js"></script>
+    </div>
 
+<!--calendario-->
+
+<div class="container">
+  <div class="date-selector">
+    <button id="prev-date">&lt;</button>
+    <span id="current-date">jueves 14 diciembre</span>
+    <button id="next-date">&gt;</button>
+  </div>
+
+  <div class="time-slots">
+    <h3>Horas disponibles, selecciona una:</h3>
+    <button class="time-slot">Reservar 12:00</button>
+    <button class="time-slot">Reservar 12:30</button>
+    <button class="time-slot">Reservar 13:00</button>
+    <button class="time-slot">Reservar 13:30</button>
+  </div>
+
+  <div class="calendar-container">
+    <h3>Otras fechas disponibles</h3>
+    <div id="calendar"></div>
+  </div>
+</div>
+
+<div
+  id="calendar-bueno">
+</div>
+
+ <script src="/js/horas.js"></script>
 </body>
 </html>
