@@ -4,6 +4,11 @@ body {
     margin: 0;
 }
 
+#txtErrorRut {
+    position: relative;
+    bottom: 20px;
+}
+
 .container {
     background-color: #fff;
     padding: 20px;

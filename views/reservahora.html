@@ -95,18 +95,21 @@
     <div class="form-section">
         <h1>Reserva de hora</h1>
         <br><br>
-        <form>
+        <form id="formRut" method="post">
             <label for="document-type">Tipo de documento</label>
-            <select id="document-type" name="document-type">
+            <select id="selectDocumento" name="document-type">
                 <option value="id-card">Carnet de Identidad</option>
             </select>
 
             <label for="document-number">Número de documento (RUT del paciente)</label>
-            <input type="text" id="document-number" name="document-number" placeholder="Ingresar número de documento">
+            <input type="text" id="rutPaciente" name="rutPaciente" placeholder="Ingresar número de documento" autocomplete="off">
+            <small id="txtErrorRut" class="d-none">Debes ingresar tu RUT para continuar.</small>
 
-            <button type="submit">CONTINUAR</button>
+            <button type="submit" onclick="reservarCita()">CONTINUAR</button>
         </form>
     </div>
 </div>
+
+<script  src="/js/reservaHora.js"></script>
 </body>
 </html>

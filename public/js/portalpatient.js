@@ -130,3 +130,56 @@ document.addEventListener('click', function(event) {
         moveHighlight(event.target);
     }
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const inputUbicacion = document.getElementById('region'); // Asegúrate de que este es el ID correcto
+  
+    inputUbicacion.addEventListener('focus', () => {
+      fetch('http://localhost:303/api/especialistas')
+        .then(response => response.json())
+        .then(data => {
+          const centrosMedicos = data.map(especialista => especialista.centro_medico);
+          // Elimina duplicados y crea la lista de sugerencias
+          const listaUnicaCentros = [...new Set(centrosMedicos)];
+          mostrarSugerencias(listaUnicaCentros);
+        })
+        .catch(error => console.error('Error al obtener los centros médicos:', error));
+    });
+  });
+  
+  function mostrarSugerencias(listaCentros) {
+    const dataList = document.getElementById('listaCentrosMedicos'); // Asegúrate de tener un <datalist> con este ID
+    dataList.innerHTML = ''; // Limpia las entradas anteriores
+    listaCentros.forEach(centro => {
+      const option = document.createElement('option');
+      option.value = centro;
+      dataList.appendChild(option);
+    });
+  }
+  document.addEventListener('DOMContentLoaded', () => {
+    const inputEspecialidad = document.getElementById('Especialidad');
+  
+    inputEspecialidad.addEventListener('focus', () => {
+      fetch('http://localhost:303/api/especialistas')
+        .then(response => response.json())
+        .then(data => {
+          const especialidades = data.map(especialista => especialista.especialidad);
+          // Elimina duplicados y crea la lista de sugerencias
+          const listaUnicaEspecialidades = [...new Set(especialidades)];
+          mostrarSugerenciasEspecialista(listaUnicaEspecialidades, 'listaEspecialidad');
+        })
+        .catch(error => console.error('Error al obtener las especialidades:', error));
+    });
+  });
+  
+  function mostrarSugerenciasEspecialista(lista, idDatalist) {
+    const dataList = document.getElementById(idDatalist);
+    dataList.innerHTML = ''; // Limpia las entradas anteriores
+    lista.forEach(item => {
+      const option = document.createElement('option');
+      option.value = item;
+      dataList.appendChild(option);
+    });
+  }
+  
+  

@@ -7,6 +7,7 @@ const cookieParser = require('cookie-parser');
 const dotenv = require('dotenv');
 const bcryptjs = require('bcryptjs');
 const session = require('express-session');
+const CryptoJS = require("crypto-js");
 // Urluncoded para capturar los datos del formulario
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());
@@ -83,9 +84,6 @@ app.get('/perfil/:id', (req, res) => {
     res.render('perfil');
 });
 
-app.get("/reservahora", (req, res) => {
-    res.render('reservahora')
-});
 //validacion si el usuario tiene la sesion iniciada
 const checkUserCookie = (req, res, next) => {
     // Obtén las cookies del usuario
@@ -101,7 +99,16 @@ const checkUserCookie = (req, res, next) => {
         res.redirect('/register');
     }
 };
+app.get("/reservahora", checkUserCookie , (req, res) => {
+    res.render('reservahora');
+});
 
+app.post("/reservahora/:id", (req, res) => {
+    const id = req.params.id;
+    const valorInput = req.body.rutPaciente;
+    console.log(valorInput); 
+    res.render('reservahora');
+});
 // Ahora usa la función middleware en tu ruta
 app.get("/especialistas", checkUserCookie, (req, res) => {
     res.render('especialistas');
