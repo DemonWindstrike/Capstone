@@ -106,6 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
       txtErrorRut.classList.add('d-block');
     } else {
       // Si el campo no está vacío, realiza la redirección.
+      sessionStorage.setItem('rPaciente', rutCod);
       window.location.href = 'http://localhost:3003/mainarea';
     }
   }

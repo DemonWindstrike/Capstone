@@ -130,6 +130,21 @@ document.addEventListener('click', function(event) {
         moveHighlight(event.target);
     }
 });
+document.addEventListener('DOMContentLoaded', () => {
+  const inputUbicacion = document.getElementById('regionProf'); // Asegúrate de que este es el ID correcto
+
+  inputUbicacion.addEventListener('focus', () => {
+    fetch('http://localhost:303/api/especialistas')
+      .then(response => response.json())
+      .then(data => {
+        const centrosMedicos = data.map(especialista => especialista.centro_medico);
+        // Elimina duplicados y crea la lista de sugerencias
+        const listaUnicaCentros = [...new Set(centrosMedicos)];
+        mostrarSugerencias(listaUnicaCentros);
+      })
+      .catch(error => console.error('Error al obtener los centros médicos:', error));
+  });
+});
 
 document.addEventListener('DOMContentLoaded', () => {
     const inputUbicacion = document.getElementById('region'); // Asegúrate de que este es el ID correcto
@@ -171,7 +186,36 @@ document.addEventListener('DOMContentLoaded', () => {
         .catch(error => console.error('Error al obtener las especialidades:', error));
     });
   });
+  document.addEventListener('DOMContentLoaded', () => {
+    const inputEspecialidad = document.getElementById('especialidadProf');
   
+    inputEspecialidad.addEventListener('focus', () => {
+      fetch('http://localhost:303/api/especialistas')
+        .then(response => response.json())
+        .then(data => {
+          const especialidades = data.map(especialista => especialista.especialidad);
+          // Elimina duplicados y crea la lista de sugerencias
+          const listaUnicaEspecialidades = [...new Set(especialidades)];
+          mostrarSugerenciasEspecialista(listaUnicaEspecialidades, 'listaEspecial');
+        })
+        .catch(error => console.error('Error al obtener las especialidades:', error));
+    });
+  });
+  document.addEventListener('DOMContentLoaded', () => {
+    const inputEspecialidad = document.getElementById('inpMedico');
+  
+    inputEspecialidad.addEventListener('focus', () => {
+      fetch('http://localhost:303/api/especialistas')
+        .then(response => response.json())
+        .then(data => {
+          const especialidades = data.map(especialista => especialista.nombre_especialista);
+          // Elimina duplicados y crea la lista de sugerencias
+          const listaUnicaEspecialidades = [...new Set(especialidades)];
+          mostrarSugerenciasEspecialista(listaUnicaEspecialidades, 'listaMedico');
+        })
+        .catch(error => console.error('Error al obtener las especialidades:', error));
+    });
+  });
   function mostrarSugerenciasEspecialista(lista, idDatalist) {
     const dataList = document.getElementById(idDatalist);
     dataList.innerHTML = ''; // Limpia las entradas anteriores
@@ -181,5 +225,27 @@ document.addEventListener('DOMContentLoaded', () => {
       dataList.appendChild(option);
     });
   }
-  
-  
+  const btnProf = document.getElementById('btnXProfesional');
+  btnProf.addEventListener("click", function() {
+    const regInput = document.getElementById('regionProf');
+    const espInput = document.getElementById('inpMedico');
+    const especialidadInput = document.getElementById('especialidadProf');
+    if (!regInput.value.trim() && !espInput.value.trim() && !especialidadInput.value.trim() ) {
+      // Si el campo está vacío o solo tiene espacios en blanco
+      regInput.style.borderColor = 'red';
+      espInput.style.borderColor = 'red';
+      especialidadInput.style.borderColor = 'red';
+      // txtErrorRut.style.color = 'red'; 
+      // txtErrorRut.classList.remove('d-none');
+      // txtErrorRut.classList.add('d-block');
+    } else {
+      // Si el campo no está vacío, realiza la redirección.
+      let regCod = btoa(regInput.value);
+      let espCod = btoa(espInput.value);
+      let especialidadCod = btoa(especialidadInput.value);
+      sessionStorage.setItem('region', regCod);
+      sessionStorage.setItem('especialidad', especialidadCod);
+      sessionStorage.setItem('especialista', espCod);
+      window.location.href = 'http://localhost:3003/horas';
+    }
+  });

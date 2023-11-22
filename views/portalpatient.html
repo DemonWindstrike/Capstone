@@ -133,7 +133,7 @@
                     </datalist>
                 </div>
                 <br>
-                <a href="/horas" class="button">BUSCAR HORAS</a>
+                <a id="btnXEspecialista" class="button">BUSCAR HORAS</a>
             </form>
             <br>
             <button onclick="history.back()" class="back-button">VOLVER</button>
@@ -177,12 +177,21 @@
                     </div>
                   </div>
                 <div class="input-group">
-                    <input type="text" id="region" name="region" placeholder="Buscar región o centro">
-                    <input type="text" id="query" name="query" placeholder="Escribe aquí tu búsqueda">
-                    <input type="text" id="query" name="query" placeholder="consulta">
+                    <input type="text" id="regionProf" list="listaCentrosMedicos" name="region" placeholder="Buscar región o centro" autocomplete="off">
+                    <datalist id="listaCentrosMedicos">
+                      <!-- Las opciones se llenarán dinámicamente con JavaScript -->
+                    </datalist>
+                    <input type="text" list="listaMedico" id="inpMedico" name="query" placeholder="Escribe aquí el nombre del especialista" autocomplete="off">
+                    <datalist id="listaMedico">
+                      <!-- Las opciones se llenarán dinámicamente con JavaScript -->
+                    </datalist>
+                    <input type="text" id="especialidadProf" list="listaEspecial" name="query" placeholder="consulta" autocomplete="off">
+                    <datalist id="listaEspecial">
+                      <!-- Las opciones se llenarán dinámicamente con JavaScript -->
+                    </datalist>
                 </div>
                 <br>
-                <button type="submit">BUSCAR HORAS</button>
+                <button id="btnXProfesional" type="button">BUSCAR HORAS</button>
             </form>
             <br>
             <button onclick="history.back()" class="back-button">VOLVER</button>
