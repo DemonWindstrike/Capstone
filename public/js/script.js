@@ -81,7 +81,8 @@ document.getElementById('submit_login').addEventListener('click', async function
 
   if (data.success) {
     
-      document.cookie = `usuario=${encodeURIComponent(data.user.email)}; path=/`;
+      document.cookie = `emailusuario=${encodeURIComponent(data.user.email)}; path=/`;
+      document.cookie = `usuario=${encodeURIComponent(data.user.user)}; path=/`;
       document.cookie = `rol=${encodeURIComponent(data.user.rol)}; path=/`;
       // Inicio de sesión exitoso, redirige a la página deseada
       console.log('', data.user);

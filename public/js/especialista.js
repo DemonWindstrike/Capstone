@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <h3>${paciente.nombre_especialista}</h3>
             <div class="buttons">
               <button id="perfil"><a style='color:white;' href="http://localhost:3003/perfil/${paciente.id_especialista}">Ver Perfil</a></button>
-              <button id="agendar">Agendar hora</button>
+              <button id="agendar"><a style='color:white;' href="http://localhost:3003/reservahora" >Agendar hora</a></button>
           </div>
         </div>
           <p>Especialidad: ${paciente.especialidad}</p>
@@ -81,17 +81,17 @@ btnBuscar.addEventListener('click', () => {
 });
 
     // Manejar la búsqueda
-  // searchButton.addEventListener('click', () => {
-  //   const query = searchInput.value.toLowerCase();
+   searchButton.addEventListener('click', () => {
+     const query = searchInput.value.toLowerCase();
 
-  //   // Filtrar las tarjetas según la búsqueda
-  //   const filteredData = especialistasData.filter((especialista) => {
-  //     const especialistaData = `${especialista.nombre_especialista} ${especialista.especialidad} ${especialista.experiencia}`.toLowerCase();
-  //     return especialistaData.includes(query);
-  //   });
-  //   console.log(query);
+     // Filtrar las tarjetas según la búsqueda
+     const filteredData = especialistasData.filter((especialista) => {
+       const especialistaData = `${especialista.nombre_especialista} ${especialista.especialidad} ${especialista.experiencia}`.toLowerCase();
+       return especialistaData.includes(query);
+     });
+     console.log(query);
 
-  //   renderCards(filteredData); // Renderiza las tarjetas filtradas
-  // });
+     renderCards(filteredData); // Renderiza las tarjetas filtradas
+   });
 });
   

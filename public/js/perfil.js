@@ -16,7 +16,7 @@ async function fetchEspecialista(id) {
 function mostrarEspecialista(data) {
   const contenedor = document.getElementById('especialista');
   contenedor.innerHTML = `<div class="profile-header">
-  <img src="/images/img${data.rut_especialista}.jpg" alt="Foto de perfil" class="profile-picture">
+  <img src="/images/img${data.nombre_especialista}.jpg" alt="Foto de perfil" class="profile-picture">
   <h1>${data.nombre_especialista}</h1>
   <p>${data.especialidad}</p>
 </div>
