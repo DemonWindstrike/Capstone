@@ -84,6 +84,23 @@ app.get('/perfil/:id', (req, res) => {
     res.render('perfil');
 });
 
+//Chatbox
+
+app.get('/respuesta1', (req, res) => {
+    res.send('Respuesta para la opción 1');
+  });
+  
+  app.get('/respuesta2', (req, res) => {
+    res.send('Respuesta para la opción 2');
+  });
+  
+  app.get('/respuesta3', (req, res) => {
+    res.send('Respuesta para la opción 3');
+  });
+  
+
+
+
 //validacion si el usuario tiene la sesion iniciada
 const checkUserCookie = (req, res, next) => {
     // Obtén las cookies del usuario

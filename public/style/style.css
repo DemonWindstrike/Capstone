@@ -812,4 +812,174 @@ header {
 /* end footer section*/
 /*# sourceMappingURL=style.css.map */
 
+/* Chat Box */
+#chat-box {
+  width: 350px; /* Ajusta el ancho según sea necesario */
+  background-color: #ffffff; /* Ajusta el color de fondo según sea necesario */
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  bottom: 100px;
+}
 
+/* Área de Mensajes */
+#chat-messages .chat-message {
+  background-color: #e5e5e5;
+  border-radius: 15px;
+  padding: 5px 10px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+#chat-messages .chat-message:hover {
+  background-color: #d4d4d4;
+}
+
+.message {
+  padding: 5px 10px;
+  margin: 4px;
+  border-radius: 15px;
+  border: 1px solid #ccc;
+}
+
+.user-image{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+  transform: scale(2);
+}
+
+.user {
+  justify-content: flex-start;
+}
+
+/* Estilo para los mensajes del usuario */
+.user-message {
+  background-color: #0084ff; /* Fondo azul para mensajes del usuario */
+  color: white; /* Texto en color blanco */
+  text-align: right; /* Alineación a la derecha */
+  /* Otros estilos específicos del usuario */
+}
+
+.bot {
+  background-color: #e0e0e0; /* Fondo gris para distinguir los mensajes del bot */
+  text-align: left; /* Alineación a la izquierda */
+  /* Otros estilos específicos del bot */
+}
+
+.bot-icon {
+  width: 30px; /* Ajusta esto según el tamaño de tu icono */
+  height: 30px; /* Ajusta esto según el tamaño de tu icono */
+  position: absolute; /* Posiciona el icono respecto al mensaje */
+  left: -40px; /* Ajusta esto para que el icono aparezca a la izquierda del mensaje */
+  top: 50%;
+  transform: translateY(-50%); /* Centra el icono verticalmente respecto al mensaje */
+}
+
+.message-bot {
+  background-color: #f0f0f0; /* Color de fondo claro para los mensajes del bot */
+  border-radius: 15px;
+  padding: 10px;
+  margin-bottom: 10px;
+  position: relative; /* Para posicionar el icono del bot correctamente */
+  text-align: left;
+}
+
+
+.message p {
+  background-color: #e5e5e5;
+  border-radius: 15px;
+  padding: 10px;
+  margin: 0;
+}
+
+
+.options button {
+  background-color: #e5e5e5;
+  border: none;
+  border-radius: 15px;
+  padding: 10px;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.options button:hover {
+  background-color: #d4d4d4;
+}
+
+#chat-messages .chat-message {
+  background-color: #e5e5e5;
+  border-radius: 15px;
+  padding: 5px 10px;
+  margin: 5px;
+}
+
+/* Botones de Opciones */
+#chat-options {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+  background: #e7e7e8; /* Color de fondo de la sección de opciones */
+}
+
+#chat-options button {
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  background: #5b4bfc; /* Color de fondo del botón */
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#chat-options button:hover {
+  background: #6c5ce7; /* Color de fondo del botón al pasar el mouse */
+}
+
+.chat-hidden {
+  display: none;
+}
+
+.chat-visible {
+  display: block;
+}
+
+/* Botón para abrir/cerrar el chat */
+#chat-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #5b4bfc; /* Color de tu preferencia */
+  border: none;
+  border-radius: 50%;
+  padding: 10px;
+  cursor: pointer;
+}
+
+#chat-toggle img {
+  width: 50px; /* Ajusta según el tamaño de tu icono */
+  height: 50px;
+  transform: scale(2);
+  max-width: 100px;
+}
+
+/* Elemento de notificación en el botón */
+#notification {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: red; /* Color de fondo de la notificación */
+  color: white; /* Color del texto de la notificación */
+  width: 20px; /* Ancho de la notificación */
+  height: 20px; /* Altura de la notificación */
+  border-radius: 50%; /* Forma circular */
+  text-align: center;
+  line-height: 20px;
+}
