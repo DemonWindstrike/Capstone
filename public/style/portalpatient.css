@@ -46,18 +46,21 @@ button {
     cursor: pointer;
 }
 
-.back-button {
-    padding: 10px 20px; /* Ajusta el padding para cambiar el tamaño */
-    background-color: #4ca8af; /* El color de fondo del botón */
-    border: none; /* Remueve el borde */
-    border-radius: 5px; /* Bordes redondeados */
-    font-weight: bold; /* Hace que el texto sea negrita */
-    cursor: pointer; /* Cambia el cursor a una mano para indicar que es clickeable */
-    outline: none; /* Remueve el borde al hacer foco en el botón */
-    transition: background-color 0.3s ease; /* Transición suave para el color de fondo */
-}
+.button-style {
+    background-color: rgb(76, 155, 175); /* Color de fondo */
+    border: none; /* Sin borde */
+    color: white; /* Color de texto */
+    padding: 15px 32px; /* Espaciado interno */
+    text-align: center; /* Alineación de texto */
+    text-decoration: none; /* Sin decoración de texto */
+    display: inline-block; /* Tipo de display */
+    font-size: 16px; /* Tamaño de fuente */
+    margin: 4px 2px; /* Margen externo */
+    cursor: pointer; /* Tipo de cursor */
+    border-radius: 8px; /* Bordes redondeados */
+  }
 
-.back-button:hover {
+.button-style:hover {
     background-color: #1dc9c9; /* Cambia el color de fondo al pasar el ratón por encima */
 }
 

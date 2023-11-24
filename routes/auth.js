@@ -1,10 +1,6 @@
 const express = require('express');
 const router = express.Router();
 
-router.post('/login', (req, res) => {
-  // Lógica para el inicio de sesión
-
-});
 
 router.post('/register', (req, res) => {
   // Lógica para el registro de usuarios
@@ -18,10 +14,17 @@ router.post('/perfil', (req, res) => {
   // Lógica para ver perfil
 });
 
+router.post('/admin', (req, res) => {
+  // Lógica para vista admin
+});
+
+router.post('/registroespe', (req, res) => {
+  // Lógica para vista admin
+});
+
 router.post('/nosotros', (req, res) => {
   // Lógica para ver nosotros
 });
-
 
 router.post('/reservahora', (req, res) => {
   // Lógica para reservar hora

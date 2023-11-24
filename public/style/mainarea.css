@@ -159,7 +159,6 @@ button:hover {
     color: #5F9EA0; /* Color de los números */
     font-size: 1.2em; /* Aumenta el tamaño de la fuente */
     font-weight: bold; /* Hace el número más audaz */
-    /* ... */
 }
 
 .step.active:before {

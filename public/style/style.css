@@ -178,7 +178,23 @@ a:focus {
   border-radius: 50px;
 }
 
+.nav-item-2{
+  display: inline-block;
+  position: relative;
+  padding: 1px 1px;
+  left: 10px;
+  background-color: #155f63;
+  border: 1px solid #14757a;
+  color: #ffffff;
+  margin-top: 1px;
+  border-radius: 50px;
+}
+
 .nav-item-1:hover{
+  background-color: transparent;
+}
+
+.nav-item-2:hover{
   background-color: transparent;
 }
 

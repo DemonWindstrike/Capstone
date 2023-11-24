@@ -8,6 +8,10 @@ const dotenv = require('dotenv');
 const bcryptjs = require('bcryptjs');
 const session = require('express-session');
 const CryptoJS = require("crypto-js");
+const bodyParser = require('body-parser');
+
+app.use(bodyParser.urlencoded({ extended: true }));
+
 // Urluncoded para capturar los datos del formulario
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());
@@ -17,9 +21,6 @@ app.use(cors());
 app.use('/auth', authRoutes);
 
 //Express validator
-
-
-
 
 // ... configuraciones previas de tu app ...
 
@@ -57,8 +58,12 @@ app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname + "/views/index.html"));
 });
 
-app.get("/login", (req, res) => {
-    res.render('login')
+app.get("/indexadmin", (req, res) => {
+    res.render('indexadmin')
+});
+
+app.get("/registroespe", (req, res) => {
+    res.render('registroespe')
 });
 
 app.get("/nosotros", (req, res) => {
@@ -141,10 +146,9 @@ app.post('/register', async (req, res) => {
     const user = req.body.user;
     const email = req.body.email;
     const pass = req.body.pass;
-    const rol = req.body.rol;
-    console.log(user, email, pass, rol);
+    console.log(user, email, pass,);
     let passwordHash = await bcryptjs.hash(pass, 8);
-    connection.query('INSERT INTO users SET ?', { user: user, email: email, pass: passwordHash, rol: rol }, async (error, result) => {
+    connection.query('INSERT INTO users SET ?', { user: user, email: email, pass: passwordHash,}, async (error, result) => {
         if (error) {
             console.log(error);
         } else {
@@ -181,6 +185,7 @@ app.post('/login', async (req, res) => {
     });
 });
 
+//Registro Especialista
 
 app.listen(3003, () => {
     console.log("Server corriendo en le puerto", href='http://localhost:3003/' );

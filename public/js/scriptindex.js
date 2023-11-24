@@ -101,7 +101,7 @@ function mostrarRespuesta(opcion) {
   var mensaje = '';
   switch (opcion) {
     case 'Opción 1':
-      mensaje = 'Respuesta de la opción 1.';
+      mensaje = 'Ver perfil especialistas';
       break;
     case 'Opción 2':
       mensaje = 'Respuesta de la opción 2.';

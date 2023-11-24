@@ -26,7 +26,6 @@ document.addEventListener("DOMContentLoaded", function() {
       const email = document.getElementById('email').value; // Actualizado el id
       const user = document.getElementById('user').value; // Actualizado el id
       const pass = document.getElementById('pass').value; // Actualizado el id
-      const rol = document.getElementById('role-selector').value;
       if (!isValidEmail(email)) {
         alert('Por favor, ingresa un correo electrónico válido.');
         return;
@@ -38,14 +37,14 @@ document.addEventListener("DOMContentLoaded", function() {
           headers: {
               'Content-Type': 'application/json'
           },
-          body: JSON.stringify({ email, user, pass, rol }) // Actualizado para coincidir con los IDs
+          body: JSON.stringify({ email, user, pass,}) // Actualizado para coincidir con los IDs
       })
       .then(response => response.json())
       .then(data => {
         console.log(data);
 
         if(data.success){
-          window.location.href = '/login';
+          window.location.href = '/register';
         } else{
           console.error('Error en el registro:', data.error);
           alert('Error en el registro. Verifica tus datos.');

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title style="left: 225px;">MediHub</title>
+
+  <!-- slider stylesheet -->
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" />
+
+  <!-- font awesome style -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="/style/bootstrap.css" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700|Roboto:400,700&display=swap" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="/style/registroespe.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="/style/style.css" rel="stylesheet" />
+
+  <link href="/style/responsive.css" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="hero_area">
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container pt-3">
+          <a class="navbar-brand" href="/">
+            <img src="images/logo.png" alt="">
+            <span>
+              MediHub
+            </span>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="d-flex  flex-column flex-lg-row align-items-center w-100 justify-content-between">
+              <ul class="navbar-nav  ">
+                <li class="nav-item active">
+                  <a class="nav-link" href="/">Inicio <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/nosotros"> Sobre Nosotros </a>
+                </li>
+              
+                <li class="nav-item-1">
+                  <a class="nav-link" href="/especialistas">Nuestros especialistas</a>
+                </li>
+
+                <li class="nav-item-2">
+                  <a class="nav-link" href="/registroespe">Registrar Especialistas</a>
+                </li>
+                
+              </ul>
+             
+                <div class="login_btn-container ml-0 ml-lg-5">
+                  <!-- Sección visible solo si el usuario NO ha iniciado sesión -->
+                  <a href="/register" id="loginLink">
+                      <img id="imgIconoLogin" src="images/user.png" alt="">
+                      <span id="txtLogin"> Iniciar Sesion / Registrarse </span>
+                  </a>
+                  <img  id="imgIconoNombre" class="d-none" src="images/user.png" alt="">
+                  <span id="txtNombre" class="d-none"></span>
+              
+                  <!-- Sección visible solo si el usuario ha iniciado sesión -->
+                  <div id="userSection" style="display: none;">
+                      <span id="userName">Nombre de Usuario</span>
+                      <button id="logoutButton">Cerrar Sesión</button>
+                  </div>
+              </div>
+            </div>
+          </div>
+
+        </nav>
+      </div>
+    </header>
+    <!-- end header section -->
+
+    <!-- Registro especialista -->
+    <div class="container">
+        <form id="registrarEspecialista" action="http://localhost:3003/api/registrarEspecialista" method="POST">
+          <h1>Registro de especialista</h1>
+          <label for="nombre_especialista">Nombre Especialista</label>
+          <input type="text" id="nombre_especialista" name="nombre_especialista" required>
+      
+          <label for="rut_especialista">Rut Especialista</label>
+          <input type="rut" id="rut_especialista" name="rut_especialista" required>
+      
+          <label for="telefono">Telefono</label>
+          <input type="text" id="telefono" name="telefono" required>
+
+          <label for="correo_electronico">Correo Electronico</label>
+          <input type="email" id="correo_electronico" name="correo_electronico" required>
+          
+          <label for="descripcion">Descripcion del Especialista</label>
+          <input type="text" id="descripcion" name="descripcion" required>
+
+          <label for="costo_consulta">Costo de la consulta</label>
+          <input type="text" id="costo_consulta" name="costo_consulta" required>
+
+          <label for="especialidad">Especialidad</label>
+          <input type="text" id="especialidad" name="especialidad" required>
+
+          <label for="experiencia">Años de experiencia</label>
+          <input type="text" id="experiencia" name="experiencia" required>
+
+          <label for="centro_medico">Centro Medico</label>
+          <input type="text" id="centro_medico" name="centro_medico" required>
+
+          <label for="universidad">Universidad</label>
+          <input type="text" id="universidad" name="universidad" required>
+      
+          <!-- Repite para los demás campos del formulario -->
+      <br><br>
+          <button type="submit">Registrar</button>
+        </form>
+      </div>
+    <!-- End registro especialista -->
+
+
+    <!-- footer section -->
+    <footer>
+        <section class="info_section layout_padding2">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-3">
+                <div class="info_contact">
+                  <h4>
+                    Contactanos
+                  </h4><br>
+                  <div class="box">
+                    <div class="img-box">
+                      <img src="images/telephone-symbol-button.png" alt="">
+                    </div>
+                    <div class="detail-box">
+                      <h6>
+                        +569 2039 1728
+                      </h6>
+                    </div>
+                  </div>
+                  <div class="box">
+                    <div class="img-box">
+                      <img src="images/email.png" alt="">
+                    </div>
+                    <div class="detail-box">
+                      <h6>
+                        medihub@clinic.cl
+                      </h6>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="info_menu">
+                  <h4>
+                    Menu
+                  </h4>
+                  <ul class="navbar-nav  ">
+                    <li class="nav-item active">
+                      <a class="nav-link" href="/">Inicio <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="/especialistas"> Nuestros Especialistas </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="/nosotros"> Sobre nosotros </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="info_news">
+                  <h4>
+                    ¡Subscribete para estar atento a las ultimas noticias!
+                  </h4>
+                  <form action="">
+                    <input type="text" placeholder="Ingresa tu email">
+                    <div class="d-flex justify-content-center justify-content-end mt-3">
+                      <button>
+                        Subscribirse
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </footer>
+</body>
+
+</html>
