@@ -40,7 +40,7 @@
     <header class="header_section">
       <div class="container-fluid">
         <nav class="navbar navbar-expand-lg custom_nav-container pt-3">
-          <a class="navbar-brand" href="index.html">
+          <a class="navbar-brand" href="/">
             <img src="images/logo.png" alt="">
             <span>
               MediHub
@@ -55,10 +55,10 @@
             <div class="d-flex  flex-column flex-lg-row align-items-center w-100 justify-content-between">
               <ul class="navbar-nav  ">
                 <li class="nav-item active">
-                  <a class="nav-link" href="/views/index.html">Inicio <span class="sr-only">(current)</span></a>
+                  <a class="nav-link" href="/">Inicio <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="buy.html"> Sobre Nosotros </a>
+                  <a class="nav-link" href="/nosotros"> Sobre Nosotros </a>
                 </li>
               
                 <li class="nav-item-1">
@@ -67,13 +67,20 @@
                 
               </ul>
              
-              <div class="login_btn-contanier ml-0 ml-lg-5">
-                <a href="/register">
-                  <img src="images/user.png" alt="">
-                  <span>
-                    Iniciar Sesion / Registrarse
-                  </span>
-                </a>
+                <div class="login_btn-container ml-0 ml-lg-5">
+                  <!-- Sección visible solo si el usuario NO ha iniciado sesión -->
+                  <a href="/register" id="loginLink">
+                      <img id="imgIconoLogin" src="images/user.png" alt="">
+                      <span id="txtLogin"> Iniciar Sesion / Registrarse </span>
+                  </a>
+                  <img  id="imgIconoNombre" class="d-none" src="images/user.png" alt="">
+                  <span id="txtNombre" class="d-none"></span>
+              
+                  <!-- Sección visible solo si el usuario ha iniciado sesión -->
+                  <div id="userSection" style="display: none;">
+                      <span id="userName">Nombre de Usuario</span>
+                      <button id="logoutButton">Cerrar Sesión</button>
+                  </div>
               </div>
             </div>
           </div>
@@ -342,7 +349,7 @@
               Por comprar tu bono por primera vez obten un descuento de un 10% pulsa en el boton de abajo para agendar tu primera hora y luego comprar tu bono
             </p>
             <div>
-              <a href="/especialistas">
+              <a href="/reservahora">
                 Agendar hora
               </a>
             </div>
@@ -365,7 +372,7 @@
     <div class="container">
       <div class="custom_heading-container ">
         <h2>
-          Nuestros socios 
+          Nuestros asociados 
         </h2>
       </div>
       <div id="carouselExample2Indicators" class="carousel slide" data-ride="carousel">
@@ -505,8 +512,7 @@
       <div id="options" class="message options">
         <img src="images/roborobo.png" alt="Bot" class="user-image" />
       </div>
-      <!-- Aquí se mostrarán las respuestas -->
-      <div id="respuesta" class="message bot"></div>
+
     </div>
   </div>
   <button id="chat-toggle" onclick="toggleChat()">

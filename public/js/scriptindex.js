@@ -1,3 +1,30 @@
+const nPaciente = getCookie("usuario");
+const imgNombre = document.getElementById("imgIconoNombre")
+const imgLogin = document.getElementById("imgIconoLogin")
+
+// Obtener el elemento <span> por su ID
+const txtLogin = document.getElementById("txtLogin");
+const txtNombre = document.getElementById("txtNombre");
+
+
+// Cambiar el texto del <span> utilizando textContent
+if (nPaciente != null) {
+  txtLogin.classList.add("d-none");
+  txtNombre.classList.remove("d-none");
+  imgLogin.classList.add("d-none")
+  imgNombre.classList.remove("d-none")
+  txtNombre.textContent = nPaciente;
+}else{
+  txtLogin.classList.remove("d-none");
+  txtNombre.classList.add("d-none");
+  imgLogin.classList.remove("d-none")
+  imgNombre.classList.add("d-none")
+}
+
+
+
+
+
 
 // Función para mostrar la notificación en el botón
 function showNotification() {
@@ -9,6 +36,13 @@ function showNotification() {
 function hideChat() {
   var chatBox = document.getElementById('chat-box');
   chatBox.style.display = 'none';
+}
+
+function toggleChat() {
+  var chatBox = document.getElementById('chat-box');
+  var isHidden = chatBox.classList.contains('chat-hidden');
+  chatBox.style.display = isHidden ? 'block' : 'none';
+  chatBox.classList.toggle('chat-hidden');
 }
 
 // Función para mostrar el chatbox
@@ -81,9 +115,25 @@ function mostrarRespuesta(opcion) {
   }
   sendMessage(mensaje);
 }
-  
 
-  // Asegúrate de que la página esté cargada antes de asignar los eventos
-  document.addEventListener("DOMContentLoaded", function() {
-    // Aquí puedes agregar cualquier código adicional que se ejecute después de cargar la página
-  });
+//funcion cookies obtencion de datos
+  
+function getCookie(cookieName) {
+  const name = cookieName + "=";
+  const decodedCookie = decodeURIComponent(document.cookie);
+  const cookieArray = decodedCookie.split(';');
+  
+  for (let i = 0; i < cookieArray.length; i++) {
+    let cookie = cookieArray[i].trim();
+    if (cookie.indexOf(name) === 0) {
+      return cookie.substring(name.length, cookie.length);
+    }
+  }
+  return null; // Devolver null si la cookie no se encuentra
+}
+
+
+// Asegúrate de que la página esté cargada antes de asignar los eventos
+document.addEventListener("DOMContentLoaded", function() {
+  // Aquí puedes agregar cualquier código adicional que se ejecute después de cargar la página
+});

@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
       
 
-      fetch('http://localhost:3000/register', {
+      fetch('http://localhost:3003/register', {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json'

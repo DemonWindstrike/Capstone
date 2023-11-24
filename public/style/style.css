@@ -814,17 +814,16 @@ header {
 
 /* Chat Box */
 #chat-box {
-  width: 350px; /* Ajusta el ancho según sea necesario */
-  background-color: #ffffff; /* Ajusta el color de fondo según sea necesario */
-  border-radius: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  bottom: 100px;
+  display: block;
+  background-color: #fff; /* Fondo blanco para el cuadro de chat */
+  border-radius: 10px; /* Bordes redondeados */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  padding: 20px; /* Espacio interior */
+  position: fixed; /* Posición fija en la pantalla */
+  bottom: 110px; /* Separación del fondo de la pantalla */
+  right: 30px; /* Separación del lado derecho de la pantalla */
+  width: 300px; /* Ancho del cuadro de chat */
+  z-index: 1000; /* Asegura que el cuadro esté sobre otros elementos */
 }
 
 /* Área de Mensajes */
@@ -913,12 +912,7 @@ header {
   background-color: #d4d4d4;
 }
 
-#chat-messages .chat-message {
-  background-color: #e5e5e5;
-  border-radius: 15px;
-  padding: 5px 10px;
-  margin: 5px;
-}
+
 
 /* Botones de Opciones */
 #chat-options {

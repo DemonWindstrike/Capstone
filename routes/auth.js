@@ -18,6 +18,11 @@ router.post('/perfil', (req, res) => {
   // Lógica para ver perfil
 });
 
+router.post('/nosotros', (req, res) => {
+  // Lógica para ver nosotros
+});
+
+
 router.post('/reservahora', (req, res) => {
   // Lógica para reservar hora
 });
