@@ -89,6 +89,7 @@ body {
     bottom: 396px;
     width: 450px;
     justify-content: space-between;
+    border-top-right-radius: 20px;
     align-items: center;
   }
   
@@ -97,6 +98,8 @@ body {
     right: 181px;
     bottom: 325px;
     width: 450px;
+    height: 324px;
+    border-bottom-right-radius: 20px;
   }
 
   .time-slots button {
