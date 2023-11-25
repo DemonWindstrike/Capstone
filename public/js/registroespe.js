@@ -21,6 +21,7 @@ document.getElementById('rut_especialista').addEventListener('input', function(e
 
 document.getElementById('registrarEspecialista').addEventListener('submit', function(event){
   event.preventDefault();
+  //referencia form
   const form = document.getElementById('registrarEspecialista');
   // Recopilar los valores de los campos del formulario
   var nombre_especialista = document.getElementById('nombre_especialista').value;
@@ -75,6 +76,7 @@ document.getElementById('registrarEspecialista').addEventListener('submit', func
   })
   .catch(error => {
       console.error('Error durante el registro:', error);
+      //vaciar inputs del form cuando la respuesta es negativa
       Array.from(form.elements).forEach(input => {
         if (input.type !== 'submit') { // Evitar el botón de envío
             input.value = '';
