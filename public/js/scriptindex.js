@@ -4,7 +4,8 @@ const imgLogin = document.getElementById("imgIconoLogin")
 
 // Obtener el elemento <span> por su ID
 const txtLogin = document.getElementById("txtLogin");
-const txtNombre = document.getElementById("txtNombre");
+const txtNombre = document.getElementById("txtNombre"); 
+const btnRegisterEspecialista = document.getElementById("btnRegisterEspecialista");
 
 
 // Cambiar el texto del <span> utilizando textContent

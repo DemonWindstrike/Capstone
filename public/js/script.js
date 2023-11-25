@@ -79,18 +79,23 @@ document.getElementById('submit_login').addEventListener('click', async function
   const data = await response.json();
 
   if (data.success) {
-    
       document.cookie = `emailusuario=${encodeURIComponent(data.user.email)}; path=/`;
       document.cookie = `usuario=${encodeURIComponent(data.user.user)}; path=/`;
       document.cookie = `rol=${encodeURIComponent(data.user.rol)}; path=/`;
-      // Inicio de sesión exitoso, redirige a la página deseada
-      console.log('', data.user);
-      // Puedes redirigir a otra página usando window.location.href o realizar otras acciones
-      window.location.href = '/';
+
+      console.log('Usuario logueado:', data.user);
+
+      // Verifica el rol del usuario y redirige a la página correspondiente
+      if (data.user.rol === 'admin') {
+          window.location.href = '/indexadmin';
+      } else if (data.user.rol === 'usuario') {
+          window.location.href = '/';
+      } else {
+          // Redirige a una página de error o muestra un mensaje si el rol no es reconocido
+          alert('Rol no autorizado. Contacta al administrador.');
+      }
   } else {
-      // Muestra un mensaje de error en modal o texto en rojo bajo los inputs
       console.error('Error en el inicio de sesión:', data.error);
       alert('Error en el inicio de sesión. Verifica tus credenciales.');
   }
-
 });
