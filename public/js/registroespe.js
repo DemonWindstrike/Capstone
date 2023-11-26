@@ -1,4 +1,4 @@
-// scripts.js
+// registroespe.js
 document.getElementById('rut_especialista').addEventListener('input', function(e) {
   let valor = e.target.value;
 
@@ -59,7 +59,15 @@ document.getElementById('registrarEspecialista').addEventListener('submit', func
   })
   .then(response => {
     if (response.status === 409) {
-      alert('Especialista ya registrado')
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: "¡Error de registro! El especialista ya ha sido registrado previamente.",
+        showConfirmButton: true,
+        confirmButtonColor: "#5cb85c",
+        confirmButtonText: "Aceptar",
+        clickOutsideToClose: false
+      });
         throw new Error('No se pudo registrar el especialista. El especialista ya existe.');
     }
     return response.json();
@@ -67,20 +75,43 @@ document.getElementById('registrarEspecialista').addEventListener('submit', func
   .then(data => {
       console.log('Respuesta del servidor:', data);
       if (data.success) {
-        alert('Especialista registrado exitosamente.');
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "¡Registro exitoso! El especialista ha sido registrado correctamente.",
+          showConfirmButton: true,
+          confirmButtonColor: "#5cb85c",
+          confirmButtonText: "Aceptar",
+        });
           // Redirigir al usuario o mostrar mensaje de éxito
       } else {
           // Mostrar mensaje de error
-          alert('No se pudo registrar el especialista. ' + data.message);
+          Swal.fire({
+            position: "center",
+            icon: "error",
+            title: `Error al registrar especialista ${data.message}`,
+            showConfirmButton: true,
+            confirmButtonColor: "#5cb85c",
+            confirmButtonText: "Aceptar"
+          });
+          
       }
   })
   .catch(error => {
       console.error('Error durante el registro:', error);
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: `Error al registrar especialista: ${error.message}`,
+        showConfirmButton: true,
+        confirmButtonColor: "#5cb85c",
+        confirmButtonText: "Aceptar"
+      });
       //vaciar inputs del form cuando la respuesta es negativa
-      Array.from(form.elements).forEach(input => {
-        if (input.type !== 'submit') { // Evitar el botón de envío
-            input.value = '';
-        }
-    });
+    //   Array.from(form.elements).forEach(input => {
+    //     if (input.type !== 'submit') { // Evitar el botón de envío
+    //         input.value = '';
+    //     }
+    // });
   });
 });
