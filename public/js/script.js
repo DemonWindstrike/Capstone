@@ -27,7 +27,16 @@ document.addEventListener("DOMContentLoaded", function() {
       const user = document.getElementById('user').value; // Actualizado el id
       const pass = document.getElementById('pass').value; // Actualizado el id
       if (!isValidEmail(email)) {
-        alert('Por favor, ingresa un correo electrónico válido.');
+        alert('Por favor, ingresa una dirección de correo electrónico válida.');
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: "Por favor, ingresa una dirección de correo electrónico válida.",
+          showConfirmButton: true,
+          confirmButtonColor: "#5cb85c",
+          confirmButtonText: "Aceptar",
+          clickOutsideToClose: false
+        });
         return;
     }
       
@@ -44,6 +53,14 @@ document.addEventListener("DOMContentLoaded", function() {
         console.log(data);
 
         if(data.success){
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "¡Registro exitoso! El usuario ha sido registrado correctamente.",
+            showConfirmButton: true,
+            confirmButtonColor: "#5cb85c",
+            confirmButtonText: "Aceptar",
+          });
           window.location.href = '/register';
         } else{
           console.error('Error en el registro:', data.error);
@@ -81,21 +98,48 @@ document.getElementById('submit_login').addEventListener('click', async function
   if (data.success) {
       document.cookie = `emailusuario=${encodeURIComponent(data.user.email)}; path=/`;
       document.cookie = `usuario=${encodeURIComponent(data.user.user)}; path=/`;
-      document.cookie = `rol=${encodeURIComponent(data.user.rol)}; path=/`;
-
+      document.cookie = `rol=${encodeURIComponent(data.user.rol)}; path=/`;    
       console.log('Usuario logueado:', data.user);
-
+      
+      
       // Verifica el rol del usuario y redirige a la página correspondiente
       if (data.user.rol === 'admin') {
           window.location.href = '/indexadmin';
+          
       } else if (data.user.rol === 'usuario') {
           window.location.href = '/';
       } else {
           // Redirige a una página de error o muestra un mensaje si el rol no es reconocido
-          alert('Rol no autorizado. Contacta al administrador.');
+          Swal.fire({
+            position: "center",
+            icon: "error",
+            title: "Rol no autorizado. Contacta al administrador.",
+            showConfirmButton: true,
+            confirmButtonColor: "#5cb85c",
+            confirmButtonText: "Aceptar",
+            clickOutsideToClose: false
+          });
+          //alert('Rol no autorizado. Contacta al administrador.');
       }
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Has iniciado sesión correctamente",
+        showConfirmButton: true,
+        confirmButtonColor: "#5cb85c",
+        confirmButtonText: "Aceptar",
+      });
   } else {
       console.error('Error en el inicio de sesión:', data.error);
-      alert('Error en el inicio de sesión. Verifica tus credenciales.');
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: "Error en el inicio de sesión. Verifica tus credenciales.",
+        showConfirmButton: true,
+        confirmButtonColor: "#5cb85c",
+        confirmButtonText: "Aceptar",
+        clickOutsideToClose: false
+      });
+      //alert('Error en el inicio de sesión. Verifica tus credenciales.');
   }
 });
