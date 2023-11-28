@@ -82,6 +82,10 @@ app.get("/horas", (req, res) => {
     res.render('horas')
 });
 
+app.get("/pagohora", (req, res) => {
+    res.render('pagohora')
+});
+
 app.get("/portalpatient", (req, res) => {
     res.render('portalpatient')
 });

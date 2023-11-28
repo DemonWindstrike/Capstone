@@ -14,6 +14,10 @@ router.post('/perfil', (req, res) => {
   // Lógica para ver perfil
 });
 
+router.post('/pagohora', (req, res) => {
+  // Lógica para ver pagohora
+});
+
 router.post('/admin', (req, res) => {
   // Lógica para vista admin
 });
