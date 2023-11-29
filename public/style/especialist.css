@@ -123,3 +123,57 @@
     cursor: pointer;
     margin-left: 10px;
   }
+
+/* Estilo boton de busqueda */
+
+#contenedor-buscar .search-box {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  right: 150px;
+}
+
+#contenedor-buscar .search-box .search-container .search-input {
+  border: 2px solid #3c3b3d; /* Borde morado para destacar la entrada */
+  outline: none;
+  padding: 8px 15px;
+  border-radius: 20px 0 0 20px; /* Esquinas izquierdas redondeadas */
+  width: calc(100% - 46px); /* Ajuste del ancho para compensar el padding y el botón */
+  box-shadow: 0px 0px 8px rgba(0,0,0,0.1); /* Sombra suave para dar profundidad */
+}
+
+#contenedor-buscar .search-box .search-container #searchButton {
+  background-color: #e9e8ec; /* Fondo morado */
+  border: none;
+  color: white;
+  padding: 10px; /* Ajuste el padding según sea necesario para el ícono */
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  cursor: pointer;
+  font-size: 0; /* Oculta el texto si hay alguno */
+  box-shadow: 0px 4px 8px rgba(0,0,0,0.1); /* Sombra suave para dar profundidad */
+  position: relative; /* Posición relativa para el posicionamiento absoluto del pseudo-elemento */
+  width: 43px; /* Ancho fijo para el botón */
+  height: 43px; /* Altura fija para el botón */
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  border: 2px solid #3c3b3d; /* Borde morado para destacar la entrada */
+}
+
+#contenedor-buscar .search-box .search-container #searchButton::after {
+  content: "\1F50D"; /* Unicode para el icono de lupa */
+  font-size: 20px; /* Ajusta esto según el tamaño que prefieras para el ícono */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Centra el ícono perfectamente */
+  color: white; /* Color del ícono */
+}
+
+
+#contenedor-buscar .search-box .search-container .d-none {
+  display: none;
+}
