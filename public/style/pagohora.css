@@ -2,9 +2,9 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f9f9f9;
-    display: -webkit-box;
+    /* display: -webkit-box;
     display: -ms-flexbox;
-    display: flex;
+    display: flex; */
     -ms-flex-line-pack: center;
         align-content: center;
     -webkit-box-align: center;
@@ -12,11 +12,11 @@ body {
             align-items: center;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
-            justify-content: center;
-    min-height: 100vh;
+            /* justify-content: center; */
+
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
-    font-family: 'Raleway';
+
 }
 
 .payment-title {
@@ -59,15 +59,20 @@ body {
     max-width: 400px;
     padding: 20px;
     color: #707070;
-    bottom: 261px;
-    left: 250px;
+    bottom: 211px;
+    left: 40px;
 }
 
 label {
     position: relative;
-    bottom: 9px;
+    bottom: 6px;
     padding-bottom: 5px;
     font-size: 13px;
+}
+
+#cardnumber{
+    position: relative;
+    bottom: 60px ;
 }
 
 input {
@@ -345,6 +350,7 @@ input {
     transition: transform 0.6s, -webkit-transform 0.6s;
     cursor: pointer;
     left: 220px;
+    top: 70px;
 }
 
 .creditcard .front,
@@ -370,3 +376,89 @@ input {
 
 /* codigo aparte */
 
+form {
+    background-color: #ebe9e9;
+    padding: 20px;
+    border-radius: 18px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 40px auto;
+    height: 35.5cm;
+    width: 1000px;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="submit"],
+  input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 4px;
+  }
+  
+  input[type="submit"] {
+    background-color: #4CAF50; /* O el color que prefieras */
+    color: white;
+    cursor: pointer;
+    position: relative;
+    top: 770px;
+  }
+  
+  input[type="submit"]:hover {
+    opacity: 0.8;
+  }
+  
+  /* Estilos adicionales para el botón de generar número aleatorio si es necesario */
+  button {
+    padding: 10px;
+    background-color: #ddd; /* O el color que prefieras */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #ccc;
+  }
+
+/* Detalles pago */
+
+.resumen-pago {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-top: 1px; /* Espacio entre la tarjeta y el recuadro de totales */
+  }
+  
+  .resumen-pago table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .resumen-pago th,
+  .resumen-pago td {
+    text-align: left;
+    padding: 8px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  /* Estilo para el último td para que no tenga border-bottom */
+  .resumen-pago tr:last-child td {
+    border-bottom: none;
+  }
+  
+  /* Estilos para que se parezcan a la imagen 2 */
+  .resumen-pago th {
+    background-color: #f2f2f2;
+    color: #333;
+  }
+  
+  .resumen-pago td {
+    background-color: #fff;
+    color: #333;
+  }

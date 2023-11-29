@@ -278,3 +278,22 @@ window.onload = function () {
         document.querySelector('.creditcard').classList.add('flipped');
     });
     };
+
+// Script pago
+
+// Supongamos que este es el objeto JSON que recibes de tu API
+const datosDeLaAPI = {
+    producto: 'Hora Kinesiologia',
+    precioUnitario: 7500,
+    subtotal: 7500,
+    Descuento: 225,
+    total: 7725
+  };
+  
+  // Llenar los datos en el HTML utilizando los IDs
+  document.getElementById('producto-nombre').textContent = `${datosDeLaAPI.producto}`;
+  document.getElementById('producto-subtotal').textContent = `$${datosDeLaAPI.precioUnitario}`;
+  document.getElementById('subtotal').textContent = `$${datosDeLaAPI.subtotal}`;
+  document.getElementById('Descuento').textContent = `$${datosDeLaAPI.cuota}`;
+  document.getElementById('total').textContent = `$${datosDeLaAPI.total}`;
+  
