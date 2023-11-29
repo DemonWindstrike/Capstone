@@ -32,6 +32,10 @@
   <link href="/style/style.css" rel="stylesheet" />
   <!-- responsive style -->
   <link href="/style/responsive.css" rel="stylesheet" />
+
+  <!-- chatbox -->
+<script type="text/javascript">(function () { var ldk = document.createElement('script'); ldk.type = 'text/javascript'; ldk.async = true; ldk.src = 'https://s.cliengo.com/weboptimizer/65678bcc0efeff0032f9d765/65678bce0efeff0032f9d768.js?platform=dashboard'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ldk, s); })(); </script>
+
 </head>
 
 <body>
@@ -505,21 +509,22 @@
 
   <!--Chatbox-->
 
-  <div id="chat-box" class="chat-hidden">
-    <div id="chat-messages" class="message-hidden" style="height: 300px; overflow-y: scroll; border: 1px solid #ccc; padding: 10px;">
-      "Hola, ¿cómo puedo ayudarte hoy? Estoy aquí para responder tus preguntas y brindarte la información que necesitas. No dudes en hacer cualquier consulta o solicitud. ¡Estoy listo para asistirte!"
-      <!-- Los mensajes de opciones se agregarán aquí -->
-      <div id="options" class="message options">
-        <img src="images/roborobo.png" alt="Bot" class="user-image" />
-      </div>
-
-    </div>
+<!-- Chatbox Container -->
+<div id="chatbox" class="chatbox">
+  <div id="chatbox-header" class="chatbox-header">
+      Soporte en línea
+      <span id="notification-alert" class="notification-alert">!</span>
   </div>
-  <button id="chat-toggle" onclick="toggleChat()">
-    <img src="images/roborobo.png" alt="Chat" /> <!-- Reemplaza con el camino a tu imagen del logo -->
-    <div id="notification" class="notification-hidden">1</div> <!-- Notificación en el botón -->
-  </button>
-
+  <div id="chatbox-body" class="chatbox-body">
+      <p>Hola, ¿cómo puedo ayudarte hoy?</p>
+      <ul id="chat-options">
+          <li onclick="sendReply('Opción 1 seleccionada')">Opción 1</li>
+          <li onclick="sendReply('Opción 2 seleccionada')">Opción 2</li>
+          <!-- Añade más opciones según sea necesario -->
+      </ul>
+  </div>
+</div>
+<!-- end chatbox -->
   <script src="/js/scriptindex.js"></script>
   <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
   <script type="text/javascript" src="/js/bootstrap.js"></script>
