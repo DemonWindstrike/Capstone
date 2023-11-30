@@ -1,3 +1,62 @@
+// import { reservarHora, getCookieValue } from './horas';
+const date =  sessionStorage.getItem("Date");
+const userName = getCookieValue('usuario');
+const email = getCookieValue('emailusuario');
+console.log(date + userName);
+if (userName != null) { //email
+    var nombreInput = document.getElementById('nombre');
+    var emailInput = document.getElementById('email');
+// Asigna un valor al campo de entrada
+    nombreInput.value = userName;
+    emailInput.value = email.replace("%40", "@");
+}
+async function obtenerCostoConsulta() {
+    try {
+        const response = await fetch('http://localhost:303/api/especialistas');
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const especialistas = await response.json();
+        const esp = sessionStorage.getItem('especialista');
+        const nombreEspecialista = atob(esp);
+
+        const especialista = especialistas.find(e => e.nombre_especialista === nombreEspecialista);
+
+        if (especialista) {
+            const costoConsulta = parseFloat(especialista.costo_consulta.replace(/\./g, '').replace(',', '.')); // Asumiendo formato "100.000" o "100,000"
+            const especialidad = especialista.especialidad; // Asumiendo que quieras usar la especialidad del especialista
+
+            const datosDeLaAPI = {
+                producto: 'Hora ' + especialidad,
+                precioUnitario: costoConsulta,
+                subtotal: costoConsulta,
+                Descuento: 0, // Puedes calcular el descuento según necesites
+                total: costoConsulta // Puedes calcular el total según necesites
+            };
+            document.getElementById('producto-nombre').textContent = `${datosDeLaAPI.producto}`;
+            document.getElementById('subtotal').textContent = `$${datosDeLaAPI.subtotal}`;
+            document.getElementById('producto-subtotal').textContent = `$${datosDeLaAPI.precioUnitario}`;
+            document.getElementById('total').textContent = `$${datosDeLaAPI.total}`;
+            document.getElementById('Descuento').textContent = `$${datosDeLaAPI.cuota}`;
+
+            return datosDeLaAPI;
+        } else {
+            throw new Error('Especialista no encontrado');
+        }
+    } catch (error) {
+        console.error('Error al obtener el costo de consulta:', error);
+        return null;
+    }
+}
+
+obtenerCostoConsulta().then(costo => {
+    if (costo) {
+        console.log(`El costo de consulta es: ${costo.total}`);
+        // Puedes realizar acciones adicionales con el costo aquí
+    }
+});
+
 window.onload = function () {
 
     const name = document.getElementById('name');
@@ -281,19 +340,11 @@ window.onload = function () {
 
 // Script pago
 
+
+
 // Supongamos que este es el objeto JSON que recibes de tu API
-const datosDeLaAPI = {
-    producto: 'Hora Kinesiologia',
-    precioUnitario: 7500,
-    subtotal: 7500,
-    Descuento: 225,
-    total: 7725
-  };
+
   
   // Llenar los datos en el HTML utilizando los IDs
-  document.getElementById('producto-nombre').textContent = `${datosDeLaAPI.producto}`;
-  document.getElementById('producto-subtotal').textContent = `$${datosDeLaAPI.precioUnitario}`;
-  document.getElementById('subtotal').textContent = `$${datosDeLaAPI.subtotal}`;
-  document.getElementById('Descuento').textContent = `$${datosDeLaAPI.cuota}`;
-  document.getElementById('total').textContent = `$${datosDeLaAPI.total}`;
+  
   

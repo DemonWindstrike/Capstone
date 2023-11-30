@@ -1,13 +1,4 @@
-function getCookieValue(cookieName) {
-  var cookies = document.cookie.split("; ");
-  for (var i = 0; i < cookies.length; i++) {
-    var cookie = cookies[i].split("=");
-    if (cookie[0] === cookieName) {
-      return cookie[1];
-    }
-  }
-  return "";
-}
+
 var nombre = getCookieValue("usuario");
 console.log(nombre)
 
@@ -18,7 +9,11 @@ document.addEventListener("DOMContentLoaded", () => {
   let selectedDate = new Date();
 
   function generateCalendar(date) {
-    calendarElement.innerHTML = ""; // Limpiar el calendario antes de regenerar
+    
+    if (calendarElement) {
+      // Verifica si el elemento existe antes de modificar su innerHTML
+      calendarElement.innerHTML = '';
+    } // Limpiar el calendario antes de regenerar
     // Lógica para generar el calendario...
   }
 
@@ -107,14 +102,17 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error('Error al registrar la cita:', error);
       alert('Cita ocupada.');
     });
-    // Implementa la lógica de reserva aquí...
+
   }
 
   // Event listener para la delegación de eventos en el contenedor de horarios
   timeSlotsContainer.addEventListener('click', (event) => {
     if (event.target.classList.contains('time-slot')) {
       const horaSeleccionada = event.target.getAttribute('data-hora');
-      reservarHora(selectedDate, horaSeleccionada);
+      sessionStorage.setItem("hora", horaSeleccionada);
+      sessionStorage.setItem("Date", selectedDate);
+      window.location.assign('http://localhost:3003/pagohora');
+      //reservarHora(selectedDate, horaSeleccionada);
     }
   });
 
@@ -174,3 +172,4 @@ especialidad.textContent = especialidadDec;
 centro.textContent = centroDec;
 var imgElement = document.getElementById("imgMedico");
 imgElement.src = `/images/img${nameDec}.jpg`;
+

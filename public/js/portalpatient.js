@@ -1,3 +1,7 @@
+let centroMedicoSeleccionado = '';
+let especialistaSeleccionado = '';
+
+
 function moveHighlight(selectedTab) {
     var highlight = document.querySelector('.highlight');
     var tabs = document.querySelectorAll('.tab-container .tab');
@@ -131,36 +135,31 @@ document.addEventListener('click', function(event) {
     }
 });
 document.addEventListener('DOMContentLoaded', () => {
-  const inputUbicacion = document.getElementById('regionProf'); // Asegúrate de que este es el ID correcto
-
-  inputUbicacion.addEventListener('focus', () => {
-    fetch('http://localhost:303/api/especialistas')
-      .then(response => response.json())
-      .then(data => {
-        const centrosMedicos = data.map(especialista => especialista.centro_medico);
-        // Elimina duplicados y crea la lista de sugerencias
-        const listaUnicaCentros = [...new Set(centrosMedicos)];
-        mostrarSugerencias(listaUnicaCentros);
-      })
-      .catch(error => console.error('Error al obtener los centros médicos:', error));
+  const inputUbicacion = document.getElementById('regionProf');
+  const inputEspecialista = document.getElementById('inpMedico');
+  inputUbicacion.addEventListener('change', (event) => {
+      centroMedicoSeleccionado = event.target.value;
+      cargarEspecialistasPorCentro(centroMedicoSeleccionado);
   });
+  inputEspecialista.addEventListener('change', (event) => {
+    especialistaSeleccionado = event.target.value;
+    cargarEspecialidadesPorEspecialista(especialistaSeleccionado);
+  });
+
+  inputUbicacion.addEventListener('focus', cargarCentrosMedicos);
 });
 
+
 document.addEventListener('DOMContentLoaded', () => {
-    const inputUbicacion = document.getElementById('region'); // Asegúrate de que este es el ID correcto
-  
-    inputUbicacion.addEventListener('focus', () => {
-      fetch('http://localhost:303/api/especialistas')
-        .then(response => response.json())
-        .then(data => {
-          const centrosMedicos = data.map(especialista => especialista.centro_medico);
-          // Elimina duplicados y crea la lista de sugerencias
-          const listaUnicaCentros = [...new Set(centrosMedicos)];
-          mostrarSugerencias(listaUnicaCentros);
-        })
-        .catch(error => console.error('Error al obtener los centros médicos:', error));
-    });
+  const inputUbicacion = document.getElementById('region');
+
+  inputUbicacion.addEventListener('change', (event) => {
+      centroMedicoSeleccionado = event.target.value;
+      cargarEspecialidadesPorCentro(centroMedicoSeleccionado);
   });
+
+  inputUbicacion.addEventListener('focus', cargarCentrosMedicos);
+});
   
   function mostrarSugerencias(listaCentros) {
     const dataList = document.getElementById('listaCentrosMedicos'); // Asegúrate de tener un <datalist> con este ID
@@ -171,51 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
       dataList.appendChild(option);
     });
   }
-  document.addEventListener('DOMContentLoaded', () => {
-    const inputEspecialidad = document.getElementById('Especialidad');
   
-    inputEspecialidad.addEventListener('focus', () => {
-      fetch('http://localhost:303/api/especialistas')
-        .then(response => response.json())
-        .then(data => {
-          const especialidades = data.map(especialista => especialista.especialidad);
-          // Elimina duplicados y crea la lista de sugerencias
-          const listaUnicaEspecialidades = [...new Set(especialidades)];
-          mostrarSugerenciasEspecialista(listaUnicaEspecialidades, 'listaEspecialidad');
-        })
-        .catch(error => console.error('Error al obtener las especialidades:', error));
-    });
-  });
-  document.addEventListener('DOMContentLoaded', () => {
-    const inputEspecialidad = document.getElementById('especialidadProf');
-  
-    inputEspecialidad.addEventListener('focus', () => {
-      fetch('http://localhost:303/api/especialistas')
-        .then(response => response.json())
-        .then(data => {
-          const especialidades = data.map(especialista => especialista.especialidad);
-          // Elimina duplicados y crea la lista de sugerencias
-          const listaUnicaEspecialidades = [...new Set(especialidades)];
-          mostrarSugerenciasEspecialista(listaUnicaEspecialidades, 'listaEspecial');
-        })
-        .catch(error => console.error('Error al obtener las especialidades:', error));
-    });
-  });
-  document.addEventListener('DOMContentLoaded', () => {
-    const inputEspecialidad = document.getElementById('inpMedico');
-  
-    inputEspecialidad.addEventListener('focus', () => {
-      fetch('http://localhost:303/api/especialistas')
-        .then(response => response.json())
-        .then(data => {
-          const especialidades = data.map(especialista => especialista.nombre_especialista);
-          // Elimina duplicados y crea la lista de sugerencias
-          const listaUnicaEspecialidades = [...new Set(especialidades)];
-          mostrarSugerenciasEspecialista(listaUnicaEspecialidades, 'listaMedico');
-        })
-        .catch(error => console.error('Error al obtener las especialidades:', error));
-    });
-  });
   function mostrarSugerenciasEspecialista(lista, idDatalist) {
     const dataList = document.getElementById(idDatalist);
     dataList.innerHTML = ''; // Limpia las entradas anteriores
@@ -249,3 +204,60 @@ document.addEventListener('DOMContentLoaded', () => {
       window.location.href = 'http://localhost:3003/horas';
     }
   });
+
+  function cargarCentrosMedicos() {
+    fetch('http://localhost:303/api/especialistas')
+        .then(response => response.json())
+        .then(data => {
+            const centrosMedicos = data.map(especialista => especialista.centro_medico);
+            const listaUnicaCentros = [...new Set(centrosMedicos)];
+            mostrarSugerencias(listaUnicaCentros, 'listaCentrosMedicos');
+        })
+        .catch(error => console.error('Error:', error));
+}
+
+function cargarEspecialistasPorCentro(centro) {
+    fetch('http://localhost:303/api/especialistas')
+        .then(response => response.json())
+        .then(data => {
+            const especialistas = data.filter(especialista => especialista.centro_medico === centro);
+            const nombresEspecialistas = especialistas.map(especialista => especialista.nombre_especialista);
+            mostrarSugerencias(nombresEspecialistas, 'listaMedico');
+        })
+        .catch(error => console.error('Error:', error));
+}
+
+function cargarEspecialidadesPorEspecialista(especialistaNombre) {
+  fetch('http://localhost:303/api/especialistas')
+      .then(response => response.json())
+      .then(data => {
+          const especialista = data.find(e => e.nombre_especialista === especialistaNombre);
+          if (especialista) {
+              const especialidades = [especialista.especialidad];
+              mostrarSugerencias(especialidades, 'listaEspecial');
+          }
+      })
+      .catch(error => console.error('Error:', error));
+}
+  function mostrarSugerencias(lista, listaId) {
+    const dataList = document.getElementById(listaId);
+    dataList.innerHTML = '';
+    lista.forEach(item => {
+        const option = document.createElement('option');
+        option.value = item;
+        dataList.appendChild(option);
+    });
+}
+
+function cargarEspecialidadesPorCentro(centro) {
+  fetch('http://localhost:303/api/especialistas')
+      .then(response => response.json())
+      .then(data => {
+          const especialidades = data
+              .filter(especialista => especialista.centro_medico === centro)
+              .map(especialista => especialista.especialidad);
+          const listaUnicaEspecialidades = [...new Set(especialidades)];
+          mostrarSugerencias(listaUnicaEspecialidades, 'listaEspecialidad');
+      })
+      .catch(error => console.error('Error:', error));
+}

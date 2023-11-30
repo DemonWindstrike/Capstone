@@ -90,13 +90,16 @@
 <form action="/ruta-para-procesar-formulario" method="post">
   <h1 style="text-align: center;">Informacion del Paciente</h1><br><br>
   <label for="nombre">Nombre completo:</label>
-  <input type="text" id="nombre" name="nombre" required>
+  <input type="text" id="nombre" name="nombre" autocomplete="off" required>
   
   <label for="email">Email:</label>
-  <input type="email" id="email" name="email" required>
+  <input type="email" id="email" name="email" autocomplete="off" required>
   
   <label for="telefono">Número de teléfono:</label>
-  <input type="tel" id="telefono" name="telefono" required>
+  <input type="tel" id="telefono" name="telefono" autocomplete="off" required>
+
+  <label for="telefono">Letra Fonasa:</label>
+  <input type="text" id="letraFonasa" maxlength="1" name="fonasa" autocomplete="off" autocapitalize="true" required>
  
   <h1 style="text-align: center;">Informacion de pago</h1>
 
@@ -263,7 +266,9 @@
         </div>
     </div>
   </form>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/imask/3.4.0/imask.min.js'></script><script  src="/js/pagohora.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/imask/3.4.0/imask.min.js'></script>
+  <script src="/js/cookies.js"></script>
+  <script src="/js/pagohora.js"></script>
 
 <!-- cositas -->
 
