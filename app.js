@@ -144,6 +144,10 @@ app.get("/especialistas", checkUserCookie, (req, res) => {
     res.render('especialistas');
 });
 
+app.get("/mantEspecialista", checkUserCookie, (req, res) => {
+    res.render('mantenedorEspecialista');
+});
+
 //Registro
 
 app.post('/register', async (req, res) => {
