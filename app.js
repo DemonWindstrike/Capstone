@@ -147,19 +147,40 @@ app.get("/especialistas", checkUserCookie, (req, res) => {
 //Registro
 
 app.post('/register', async (req, res) => {
-    const user = req.body.user;
-    const email = req.body.email;
-    const pass = req.body.pass;
-    console.log(user, email, pass,);
-    let passwordHash = await bcryptjs.hash(pass, 8);
-    connection.query('INSERT INTO users SET ?', { user: user, email: email, pass: passwordHash,}, async (error, result) => {
-        if (error) {
-            console.log(error);
-        } else {
-            res.render('index');
-        }
-    });
+    const { user, email, pass, rol, rut, edad } = req.body;
+    console.log(user, email, pass);
+
+    try {
+        // Verificar si el usuario o correo electrónico ya están registrados
+        connection.query('SELECT * FROM users WHERE email = ? OR user = ?', [email, user], async (error, results) => {
+            if (error) {
+                console.log(error);
+                return res.status(500).json({ success: false, error: 'Error al verificar el usuario.' });
+            }
+
+            if (results.length > 0) {
+                // Usuario o correo electrónico ya registrados
+                return res.status(409).json({ success: false, error: 'El usuario o correo electrónico ya están en uso.' });
+            } else {
+                // Si no hay duplicados, procedemos a crear el nuevo usuario
+                let passwordHash = await bcryptjs.hash(pass, 8);
+                connection.query('INSERT INTO users SET ?', { user: user, email: email, rol: rol, pass: passwordHash, rut: rut, edad: edad }, (error, results) => {
+                    if (error) {
+                        console.log(error);
+                        return res.status(500).json({ success: false, error: 'Error al registrar el usuario.' });
+                    } else {
+                        return res.status(201).json({ success: true, message: 'Usuario registrado con éxito.' });
+                    }
+                });
+            }
+        });
+    } catch (error) {
+        console.error('Error al procesar el registro:', error);
+        res.status(500).json({ success: false, error: 'Error al procesar la solicitud.' });
+    }
 });
+
+
 
 //Login
 

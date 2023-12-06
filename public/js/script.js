@@ -25,9 +25,12 @@ document.addEventListener("DOMContentLoaded", function() {
   
       const email = document.getElementById('email').value; // Actualizado el id
       const user = document.getElementById('user').value; // Actualizado el id
-      const pass = document.getElementById('pass').value; // Actualizado el id
+      const pass = document.getElementById('pass').value;
+      const rut = document.getElementById('rutRegister').value; 
+      const edad = document.getElementById('edadRegister').value;  // Actualizado el id
+      const rol = 'usuario';
       if (!isValidEmail(email)) {
-        alert('Por favor, ingresa una dirección de correo electrónico válida.');
+        //alert('Por favor, ingresa una dirección de correo electrónico válida.');
         Swal.fire({
           position: "center",
           icon: "error",
@@ -46,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function() {
           headers: {
               'Content-Type': 'application/json'
           },
-          body: JSON.stringify({ email, user, pass,}) // Actualizado para coincidir con los IDs
+          body: JSON.stringify({ email, user, rol , pass, rut, edad}) // Actualizado para coincidir con los IDs
       })
       .then(response => response.json())
       .then(data => {
@@ -60,11 +63,24 @@ document.addEventListener("DOMContentLoaded", function() {
             showConfirmButton: true,
             confirmButtonColor: "#5cb85c",
             confirmButtonText: "Aceptar",
+          }).then((result) => {
+            if (result.isConfirmed) {
+              window.location.assign('/register');
+            }
           });
-          window.location.href = '/register';
+          //window.location.href = '/register';
         } else{
           console.error('Error en el registro:', data.error);
-          alert('Error en el registro. Verifica tus datos.');
+          Swal.fire({
+            position: "center",
+            icon: "error",
+            title: "Error en el registro. El usuario ya existe o es invalido.",
+            showConfirmButton: true,
+            confirmButtonColor: "#5cb85c",
+            confirmButtonText: "Aceptar",
+            clickOutsideToClose: false
+          });
+          //alert('Error en el registro. Verifica tus datos.');
         }
       })
       .catch(error => {
@@ -103,24 +119,7 @@ document.getElementById('submit_login').addEventListener('click', async function
       
       
       // Verifica el rol del usuario y redirige a la página correspondiente
-      if (data.user.rol === 'admin') {
-          window.location.href = '/indexadmin';
-          
-      } else if (data.user.rol === 'usuario') {
-          window.location.href = '/';
-      } else {
-          // Redirige a una página de error o muestra un mensaje si el rol no es reconocido
-          Swal.fire({
-            position: "center",
-            icon: "error",
-            title: "Rol no autorizado. Contacta al administrador.",
-            showConfirmButton: true,
-            confirmButtonColor: "#5cb85c",
-            confirmButtonText: "Aceptar",
-            clickOutsideToClose: false
-          });
-          //alert('Rol no autorizado. Contacta al administrador.');
-      }
+      
       Swal.fire({
         position: "center",
         icon: "success",
@@ -128,6 +127,27 @@ document.getElementById('submit_login').addEventListener('click', async function
         showConfirmButton: true,
         confirmButtonColor: "#5cb85c",
         confirmButtonText: "Aceptar",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          if (data.user.rol === 'admin') {
+            window.location.assign('http://localhost:3003/indexadmin'); // Corregido
+            
+        } else if (data.user.rol === 'usuario') {
+          window.location.assign('http://localhost:3003/'); // Corregido
+        } else {
+            // Redirige a una página de error o muestra un mensaje si el rol no es reconocido
+            Swal.fire({
+              position: "center",
+              icon: "error",
+              title: "Rol no autorizado. Contacta al administrador.",
+              showConfirmButton: true,
+              confirmButtonColor: "#5cb85c",
+              confirmButtonText: "Aceptar",
+              clickOutsideToClose: false
+            });
+            //alert('Rol no autorizado. Contacta al administrador.');
+        }
+        }
       });
   } else {
       console.error('Error en el inicio de sesión:', data.error);

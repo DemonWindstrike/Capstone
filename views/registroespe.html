@@ -104,7 +104,7 @@
           <input type="text" id="nombre_especialista" name="nombre_especialista" required>
       
           <label for="rut_especialista">Rut Especialista</label>
-          <input type="text" id="rut_especialista" name="rut_especialista" required>
+          <input type="text" id="rut_especialista" name="rut_especialista" placeholder="Sin puntos ni guiones." required>
       
           <label for="telefono">Telefono</label>
           <input type="text" id="telefono" name="telefono" required>
@@ -130,6 +130,11 @@
           <label for="universidad">Universidad</label>
           <input type="text" id="universidad" name="universidad" required>
       
+          <label for="tipoCentro">Tipo de centro medico:</label>
+          <input type="text" id="tipoCentro" name="tipoCentro" placeholder="Publico o Privado" required>
+
+          <label for="nivelAtencion">Nivel Atencion:</label>
+          <input type="text" id="nivelAtencion" name="nivelAtencion" placeholder="Ej: Nivel 1" required>
           <!-- Repite para los demás campos del formulario -->
       <br><br>
           <button type="submit">Registrar</button>
@@ -208,6 +213,7 @@
         </section>
       </footer>
       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+      <script src="/js/cookies.js"></script>
       <script src="/js/registroespe.js"></script>
 </body>
 

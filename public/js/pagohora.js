@@ -1,7 +1,21 @@
-// import { reservarHora, getCookieValue } from './horas';
+const inputAfiliado = document.getElementById('afiliado');
+const txtPago = document.getElementById('txtPago'); //txtPago
+const resumenPago = document.getElementById('resumenPago'); //resumenPago
+const divFonasa = document.getElementById('divFonasa');
+const valorLetraFonasa = document.getElementById('letraFonasa');
+const cardnumber = document.getElementById('cardnumber'); //cardnumber
+const btnPagar = document.getElementById('btnPagar'); //btnPagar
 const date =  sessionStorage.getItem("Date");
 const userName = getCookieValue('usuario');
 const email = getCookieValue('emailusuario');
+const nPaciente = getCookieValue("usuario");
+const imgNombre = document.getElementById("imgIconoNombre")
+const imgLogin = document.getElementById("imgIconoLogin")
+
+// Obtener el elemento <span> por su ID
+const txtLogin = document.getElementById("txtLogin");
+const txtNombre = document.getElementById("txtNombre"); 
+const btnRegisterEspecialista = document.getElementById("btnRegisterEspecialista");
 console.log(date + userName);
 if (userName != null) { //email
     var nombreInput = document.getElementById('nombre');
@@ -10,6 +24,34 @@ if (userName != null) { //email
     nombreInput.value = userName;
     emailInput.value = email.replace("%40", "@");
 }
+
+
+
+// Cambiar el texto del <span> utilizando textContent
+if (nPaciente != null) {
+  txtLogin.classList.add("d-none");
+  txtNombre.classList.remove("d-none");
+  imgLogin.classList.add("d-none")
+  imgNombre.classList.remove("d-none")
+  txtNombre.textContent = nPaciente;
+}else{
+  txtLogin.classList.remove("d-none");
+  txtNombre.classList.add("d-none");
+  imgLogin.classList.remove("d-none")
+  imgNombre.classList.add("d-none")
+}
+
+inputAfiliado.addEventListener('input', function() {
+  // Verificar si el valor del input es "Si" (sin importar mayúsculas o minúsculas)
+  if (inputAfiliado.value.trim().toLowerCase() === 'si') {
+    // Mostrar el divFonasa si el valor es "Si"
+    divFonasa.classList.remove('d-none');
+  } else {
+    // Ocultar el divFonasa si el valor no es "Si"
+    divFonasa.classList.add('d-none');
+  }
+});
+
 async function obtenerCostoConsulta() {
     try {
         const response = await fetch('http://localhost:303/api/especialistas');
@@ -20,25 +62,65 @@ async function obtenerCostoConsulta() {
         const especialistas = await response.json();
         const esp = sessionStorage.getItem('especialista');
         const nombreEspecialista = atob(esp);
-
         const especialista = especialistas.find(e => e.nombre_especialista === nombreEspecialista);
 
         if (especialista) {
-            const costoConsulta = parseFloat(especialista.costo_consulta.replace(/\./g, '').replace(',', '.')); // Asumiendo formato "100.000" o "100,000"
-            const especialidad = especialista.especialidad; // Asumiendo que quieras usar la especialidad del especialista
+            let costoConsulta = parseFloat(especialista.costo_consulta.replace(/\./g, '').replace(',', '.'));
+            let especialidad = especialista.especialidad;
+            let totalConsulta = 0;
+            console.log(especialista.tipoCentroMedico.toUpperCase());
 
+            // Asegúrate de que valorLetraFonasa e inputAfiliado son elementos DOM válidos
+            let valorLetraFonasa = document.getElementById('letraFonasa');
+            let inputAfiliado = document.getElementById('afiliado');
+
+            // Comprobar que los elementos existen y realizar las acciones correspondientes
+            if (inputAfiliado && inputAfiliado.value.trim() !== '') {
+                console.log("aa")
+                let valorFonasa = valorLetraFonasa.value.trim().toUpperCase();
+                let afiliadoValor = inputAfiliado.value.trim().toLowerCase();
+            
+                if (valorFonasa === '' && afiliadoValor === 'no') {
+                    console.log("no es afiliado");
+                    var nivel = especialista.nivelAtencion;
+                    var tipoHospital = especialista.tipoCentroMedico.toLowerCase();
+                    console.log(nivel, especialidad, costoConsulta, tipoHospital)
+                    // Esperar a que la promesa se resuelva antes de continuar
+                    var data = await calcularCopagoFonasa(nivel, especialidad.toLowerCase(), costoConsulta, tipoHospital);
+                    totalConsulta = data.montoPrestacion;
+                    costoConsulta = data.montoPrestacion;                     
+                } else if (['A', 'B', 'C', 'D'].includes(valorFonasa) && especialista.tipoCentroMedico.toUpperCase() === 'PÚBLICO') {
+                    console.log("Afiliado con letra Fonasa y centro médico público");
+                    costoConsulta = 0;
+                    totalConsulta = 0;
+                    console.log(valorLetraFonasa.value)
+                } else if (valorFonasa && especialista.tipoCentroMedico.toUpperCase() === 'PRIVADO') {
+                    console.log("Afiliado con centro médico privado");
+                    const nivel = especialista.nivelAtencion;
+                    const tipoHospital = especialista.tipoCentroMedico.toLowerCase();
+                    console.log(nivel, especialidad, costoConsulta, tipoHospital)
+                    // Esperar a que la promesa se resuelva antes de continuar
+                    const data = await calcularCopagoFonasa(nivel, especialidad.toLowerCase(), costoConsulta, tipoHospital);
+                    totalConsulta = data.copago;
+                    costoConsulta = data.montoPrestacion;
+                }
+            } else {
+                console.error('Elementos del DOM no encontrados.');
+            }
+
+            // Código para actualizar UI...
             const datosDeLaAPI = {
-                producto: 'Hora ' + especialidad,
+                producto: 'Hora ' +  especialidad,
                 precioUnitario: costoConsulta,
                 subtotal: costoConsulta,
-                Descuento: 0, // Puedes calcular el descuento según necesites
-                total: costoConsulta // Puedes calcular el total según necesites
+                Descuento: 0, // Aquí se puede calcular el descuento si es necesario
+                total: totalConsulta
             };
-            document.getElementById('producto-nombre').textContent = `${datosDeLaAPI.producto}`;
-            document.getElementById('subtotal').textContent = `$${datosDeLaAPI.subtotal}`;
-            document.getElementById('producto-subtotal').textContent = `$${datosDeLaAPI.precioUnitario}`;
-            document.getElementById('total').textContent = `$${datosDeLaAPI.total}`;
-            document.getElementById('Descuento').textContent = `$${datosDeLaAPI.cuota}`;
+            document.getElementById('producto-nombre').textContent = datosDeLaAPI.producto;
+            document.getElementById('subtotal').textContent = `$${datosDeLaAPI.subtotal.toLocaleString()}`;
+            document.getElementById('producto-subtotal').textContent = `$${datosDeLaAPI.precioUnitario.toLocaleString()}`;
+            document.getElementById('total').textContent = `$${datosDeLaAPI.total.toLocaleString()}`;
+            document.getElementById('Descuento').textContent = `$${datosDeLaAPI.Descuento.toLocaleString()}`;
 
             return datosDeLaAPI;
         } else {
@@ -46,16 +128,27 @@ async function obtenerCostoConsulta() {
         }
     } catch (error) {
         console.error('Error al obtener el costo de consulta:', error);
-        return null;
+        return null; // O manejar el error como prefieras
     }
 }
 
-obtenerCostoConsulta().then(costo => {
-    if (costo) {
-        console.log(`El costo de consulta es: ${costo.total}`);
-        // Puedes realizar acciones adicionales con el costo aquí
-    }
-});
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    // Se asegura de que el DOM esté completamente cargado antes de asignar el evento
+    const botonCalcular = document.getElementById('calcularCopago');
+    botonCalcular.addEventListener('click', function() {
+      obtenerCostoConsulta().then(costo => {
+        if (costo) {
+          console.log(`El costo de consulta es: ${costo.total}`);
+          txtPago.classList.remove('d-none'); 
+          resumenPago.classList.remove('d-none');
+          // Puedes realizar acciones adicionales con el costo aquí
+        }
+      }).catch(error => {
+        console.error('Hubo un error al calcular el copago: ', error);
+      });
+    });
+  });
 
 window.onload = function () {
 
@@ -338,12 +431,169 @@ window.onload = function () {
     });
     };
 
-// Script pago
+// Funcion fetch para calculo copago
+async function calcularCopagoFonasa(nivelFonasa, especialidad, montoPrestacion, tipoHospital) {
+    try {
+      const response = await fetch('http://localhost:303/api/calcularCopagoFonasa', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ nivelFonasa, especialidad, montoPrestacion, tipoHospital })
+      });
+  
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+  
+      const data = await response.json();
+      console.log('Copago calculado:', data);
+      return data;
+    } catch (error) {
+      console.error('Error al calcular el copago Fonasa:', error);
+    }
+  }
+//funcion para generar el id transaccion al pagar
+async function generarIdDeTransaccion(numeroDeTarjeta) {
+   // Asegúrate de que la URL base sea la correcta para tu entorno de servidor
+   const url = 'http://localhost:303/api/transaccion';
+ 
+   try {
+     const response = await fetch(url, {
+       method: 'POST',
+       headers: {
+         'Content-Type': 'application/json'
+       },
+       body: JSON.stringify({ numeroTarjeta: numeroDeTarjeta })
+     });
+ 
+     if (!response.ok) {
+       throw new Error(`HTTP error! status: ${response.status}`);
+     }
+ 
+     const data = await response.json();
+     return data.idTransaccion; // Devuelve el ID de transacción generado
+   } catch (error) {
+     console.error('Error al realizar la solicitud:', error);
+     throw error; // O manejar el error como prefieras
+   }
+}
+var idTransacciones;
+//listener boton pagar deberia accionar reserva de cita y generacion de id transaccion para emular un pago real
+btnPagar.addEventListener('click', () => {
+    let card = cardnumber.value;
+    generarIdDeTransaccion(card)
+        .then(idTransaccion => {
+            console.log('ID de Transacción generado:', idTransaccion);   
+            idTransacciones = idTransaccion;         
+            // Obtener variables del sessionStorage
+            let horaSelect = sessionStorage.getItem('hora');
+            let dateSelect = sessionStorage.getItem('Date');
+
+            // Asegúrate de que las variables existen o maneja el caso en que no existan
+            if (horaSelect && dateSelect) {
+                // Ejecutar la función de reserva de cita
+                console.log("horaSelect: "+ horaSelect + "dateSelect"+ dateSelect);
+                reservarHora(dateSelect, horaSelect);
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "¡Cita registrada y pago completado con éxito! ¡Gracias por confiar en nuestros servicios! el id de la transaccion es: " + idTransaccion,
+                    showConfirmButton: true,
+                    confirmButtonColor: "#5cb85c",
+                    confirmButtonText: "Aceptar",
+                  });
+                
+            } else {
+                console.error('Una o ambas variables no están disponibles en el sessionStorage.');
+            }
+        })
+        .catch(error => console.error('Error al generar ID de transacción:', error));
+});
 
 
+//funcion para reservar hora recibe fecha y hora
+function reservarHora(fecha, hora) {
+    console.log('Reservando hora:', fecha, hora);
+    const tituloCita = getCookieValue("usuario"); // Asegúrate de que este valor se establezca en el sessionStorage
+    const idEspecialista = sessionStorage.getItem('idEspecialista');
+    let nameEspec = sessionStorage.getItem("especialista");
+    let nameDec = atob(nameEspec); // Asegúrate de que este valor se establezca en el sessionStorage
+    
+    // Formatear fechas de inicio y término del evento
+    const partesDeFecha = fecha.split(' ');
+    const dia = partesDeFecha[2].padStart(2, '0'); // Asegurarse de que el día tenga dos dígitos
+    const mes = getMonthNumber(partesDeFecha[1]);
+    const año = partesDeFecha[3];
+    const _fecha = `${año}-${mes}-${dia}`;
 
-// Supongamos que este es el objeto JSON que recibes de tu API
+    // Combinar la fecha con la nueva hora
+    const fechaInicioEvento = new Date(_fecha + 'T' + hora + ':00');
+    const fechaTerminoEvento = new Date(fechaInicioEvento.getTime() + 30 * 60000);// Asume que cada cita dura 30 minutos
+    console.log("inicio: " + fechaInicioEvento + " termino: " + fechaTerminoEvento)
+    // Preparar el cuerpo de la solicitud
+    const datosCita = {
+      nombrePaciente: tituloCita,
+      fechaInicioEvento: fechaInicioEvento.toISOString().slice(0, 19),
+      fechaTerminoEvento: fechaTerminoEvento.toISOString().slice(0, 19),
+      nombreEspecialista: nameDec
+    };
+  
+    // Enviar la solicitud fetch al nuevo endpoint
+    fetch('http://localhost:303/api/registrar-cita', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(datosCita),
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Problema al registrar la cita');
+      }
+      return response.json();
+    })
+    .then(data => {
+        Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "¡Cita registrada y pago completado con éxito! ¡Gracias por confiar en nuestros servicios! el id de la transaccion es: " + idTransacciones,
+            showConfirmButton: true,
+            confirmButtonColor: "#5cb85c",
+            confirmButtonText: "Aceptar",
+          }).then((result) => {
+            if (result.isConfirmed) {
+              window.location.assign('http://localhost:3003/');
+            }
+          });        
+      // Aquí podrías actualizar la UI o el calendario para reflejar la nueva cita
+    })
+    .catch(error => {
+      console.error('Error al registrar la cita:', error);
+      Swal.fire({
+        position: "center",
+        icon: "error",
+        title: `Lo sentimos, la cita seleccionada ya está ocupada. Por favor, seleccione otra fecha y hora para su cita.`,
+        showConfirmButton: true,
+        confirmButtonColor: "#5cb85c",
+        confirmButtonText: "Aceptar"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location.assign('http://localhost:3003/horas');
+        }
+      });
+      //alert('Cita ocupada.');
+    });
 
+  }
+
+  function getMonthNumber(monthName) {
+    const months = {
+      'Jan': '01', 'Feb': '02', 'Mar': '03', 'Apr': '04', 'May': '05', 'Jun': '06',
+      'Jul': '07', 'Aug': '08', 'Sep': '09', 'Oct': '10', 'Nov': '11', 'Dec': '12'
+    };
+    return months[monthName] || '01';
+  }
   
   // Llenar los datos en el HTML utilizando los IDs
   

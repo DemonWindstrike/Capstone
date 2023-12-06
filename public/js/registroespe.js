@@ -1,4 +1,29 @@
 // registroespe.js
+const nPaciente = getCookieValue("usuario");
+const imgNombre = document.getElementById("imgIconoNombre")
+const imgLogin = document.getElementById("imgIconoLogin")
+
+// Obtener el elemento <span> por su ID
+const txtLogin = document.getElementById("txtLogin");
+const txtNombre = document.getElementById("txtNombre"); 
+const btnRegisterEspecialista = document.getElementById("btnRegisterEspecialista");
+
+
+// Cambiar el texto del <span> utilizando textContent
+if (nPaciente != null) {
+  txtLogin.classList.add("d-none");
+  txtNombre.classList.remove("d-none");
+  imgLogin.classList.add("d-none")
+  imgNombre.classList.remove("d-none")
+  txtNombre.textContent = nPaciente;
+}else{
+  txtLogin.classList.remove("d-none");
+  txtNombre.classList.add("d-none");
+  imgLogin.classList.remove("d-none")
+  imgNombre.classList.add("d-none")
+}
+
+
 document.getElementById('rut_especialista').addEventListener('input', function(e) {
   let valor = e.target.value;
 
@@ -34,6 +59,8 @@ document.getElementById('registrarEspecialista').addEventListener('submit', func
   var experiencia = document.getElementById('experiencia').value;
   var centro_medico = document.getElementById('centro_medico').value;
   var universidad = document.getElementById('universidad').value;
+  var tipoCentro = document.getElementById('tipoCentro').value;
+  var nivelAtencion = document.getElementById('nivelAtencion').value;
 
   // Crear un objeto con los datos del formulario
   var formData = {
@@ -46,7 +73,9 @@ document.getElementById('registrarEspecialista').addEventListener('submit', func
       especialidad: especialidad,
       experiencia: experiencia,
       centro_medico: centro_medico,
-      universidad: universidad
+      universidad: universidad,
+      tipoCentroMedico: tipoCentro,
+      nivelAtencion: nivelAtencion
   };
 
   // Realizar la petición fetch al servidor
@@ -74,7 +103,7 @@ document.getElementById('registrarEspecialista').addEventListener('submit', func
   })
   .then(data => {
       console.log('Respuesta del servidor:', data);
-      if (data.success) {
+      if (data) {
         Swal.fire({
           position: "center",
           icon: "success",

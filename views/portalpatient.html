@@ -71,14 +71,21 @@
                 
               </ul>
              
-              <div class="login_btn-contanier ml-0 ml-lg-5">
-                <a href="/register">
-                  <img src="images/user.png" alt="">
-                  <span>
-                    Iniciar Sesion / Registrarse
-                  </span>
+              <div class="login_btn-container ml-0 ml-lg-5">
+                <!-- Sección visible solo si el usuario NO ha iniciado sesión -->
+                <a href="/register" id="loginLink">
+                    <img id="imgIconoLogin" src="images/user.png" alt="">
+                    <span id="txtLogin"> Iniciar Sesion / Registrarse </span>
                 </a>
-              </div>
+                <img  id="imgIconoNombre" class="d-none" src="images/user.png" alt="">
+                <span id="txtNombre" class="d-none"></span>
+            
+                <!-- Sección visible solo si el usuario ha iniciado sesión -->
+                <div id="userSection" style="display: none;">
+                    <span id="userName">Nombre de Usuario</span>
+                    <button id="logoutButton">Cerrar Sesión</button>
+                </div>
+            </div>
             </div>
           </div>
 
@@ -99,8 +106,8 @@
             <h2>Reserva de hora</h2>
             <p>Paso 3: Seleccionar especialidad o profesional</p>
             <div class="tab-container">
-                <div id="tabSpecialty" class="tab active" onclick="moveHighlight('specialty')">Búsqueda por especialidad</div>
-                <div id="tabProfessional" class="tab" onclick="moveHighlight('professional')">Búsqueda por profesional</div>
+                <!-- <div id="tabSpecialty" class="tab" onclick="moveHighlight('specialty')">Búsqueda por especialidad</div> -->
+                <div id="tabProfessional" class="tab active" onclick="moveHighlight('professional')">Búsqueda por profesional</div>
                 <div class="highlight"></div>
             </div>
             
@@ -147,7 +154,7 @@
             <h2>Reserva de hora</h2>
             <p>Paso 3: Seleccionar especialidad o profesional</p>
             <div class="tab-container">
-                <div id="tabSpecialty" class="tab" onclick="moveHighlight('specialty')">Búsqueda por especialidad</div>
+                <!-- <div id="tabSpecialty" class="tab" onclick="moveHighlight('specialty')">Búsqueda por especialidad</div> -->
                 <div id="tabProfessional" class="tab active" onclick="moveHighlight('professional')">Búsqueda por profesional</div>
                 <div class="highlight"></div>
             </div>
@@ -186,6 +193,7 @@
         </div>
     </div>
 </div>
+    <script src="/js/cookies.js"></script>
     <script src="/js/portalpatient.js"></script>
 </body>
 </html>

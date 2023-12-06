@@ -11,6 +11,9 @@
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/style/estilos.css">
     <title>Registro</title>
+    <link rel="icon" sizes="16x16" href="/images/logo16x16.png">
+    <link rel="icon" sizes="32x32" href="/path/to/favicon-32x32.png">
+    <link rel="icon" sizes="48x48" href="/path/to/favicon-48x48.png">
 </head>
 <body>
     <div class="container-form register">
@@ -24,16 +27,24 @@
         <div class="form-information">
             <div class="form-information-childs">
                 <h2>Crear una Cuenta</h2>
-                <div class="icons">
+                <div class="icons d-none">
                     <i class='bx bxl-google'></i>
                     <i class='bx bxl-github'></i>
                     <i class='bx bxl-linkedin' ></i>
                 </div>
-                <p>o usa tu email para registrarte</p>
+                <p class="d-none">o usa tu email para registrarte</p>
                 <form class="form">
                     <label>
                         <i class='bx bx-user'></i>
                         <input type="text" placeholder="Nombre completo" id="user"> <!-- Actualizado el id -->
+                    </label>
+                    <label>
+                        <i class='bx bx-user'></i>
+                        <input type="text" placeholder="Rut" id="rutRegister"> <!-- Actualizado el id -->
+                    </label>
+                    <label>
+                        <i class='bx bx-user'></i>
+                        <input type="number" placeholder="Edad" id="edadRegister"> <!-- Actualizado el id -->
                     </label>
                     <label>
                         <i class='bx bx-envelope'></i>
@@ -65,12 +76,12 @@
         <div class="form-information">
             <div class="form-information-childs">
                 <h2>Iniciar Sesión</h2>
-                <div class="icons">
+                <div class="icons d-none">
                     <i class='bx bxl-google'></i>
                     <i class='bx bxl-github'></i>
                     <i class='bx bxl-linkedin' ></i>
                 </div>
-                <p>o Iniciar Sesión con una cuenta</p>
+                <p class="d-none">o Iniciar Sesión con una cuenta</p>
                 <form class="form">
 
                     <label >

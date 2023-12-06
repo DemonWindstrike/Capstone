@@ -69,14 +69,21 @@
                 
               </ul>
              
-              <div class="login_btn-contanier ml-0 ml-lg-5">
-                <a href="/register">
-                  <img src="images/user.png" alt="">
-                  <span>
-                    Iniciar Sesion / Registrarse
-                  </span>
+              <div class="login_btn-container ml-0 ml-lg-5">
+                <!-- Sección visible solo si el usuario NO ha iniciado sesión -->
+                <a href="/register" id="loginLink">
+                    <img id="imgIconoLogin" src="images/user.png" alt="">
+                    <span id="txtLogin"> Iniciar Sesion / Registrarse </span>
                 </a>
-              </div>
+                <img  id="imgIconoNombre" class="d-none" src="images/user.png" alt="">
+                <span id="txtNombre" class="d-none"></span>
+            
+                <!-- Sección visible solo si el usuario ha iniciado sesión -->
+                <div id="userSection" style="display: none;">
+                    <span id="userName">Nombre de Usuario</span>
+                    <button id="logoutButton">Cerrar Sesión</button>
+                </div>
+            </div>
             </div>
           </div>
 
@@ -102,7 +109,7 @@
                   </a>
                 </div>
                 <div class="service-card dental">
-                  <a href=""> 
+                  <a href="/portalpatient"> 
                     <img src="images/diente.png" alt="Dental">
                     <p>Dental</p>
                   </a>
@@ -114,7 +121,7 @@
                   </a>
                 </div> -->
                 <div class="service-card telemedicina">
-                  <a href="">
+                  <a href="/portalpatient">
                     <img src="images/telemedicina.png" alt="Telemedicina">
                     <p>Telemedicina</p>
                   </a>
@@ -132,7 +139,7 @@
                   </a>
                 </div> -->
                 <div class="service-card vacunatorio">
-                  <a href="">
+                  <a href="/portalpatient">
                     <img src="images/vacuna.png" alt="Vacunatorio">
                     <p>Vacunatorio</p>
                   </a>
@@ -217,5 +224,7 @@
       </div>
     </section>
   </footer>
+  <script src="/js/cookies.js"></script>
+  <script src="/js/mainArea.js"></script>
 </body>
 </html>

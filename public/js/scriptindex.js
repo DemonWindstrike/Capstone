@@ -6,14 +6,7 @@ const imgLogin = document.getElementById("imgIconoLogin")
 const txtLogin = document.getElementById("txtLogin");
 const txtNombre = document.getElementById("txtNombre"); 
 const btnRegisterEspecialista = document.getElementById("btnRegisterEspecialista");
-// Swal.fire({
-//   position: "center",
-//   icon: "success",
-//   title: "Has iniciado sesión correctamente",
-//   showConfirmButton: true,
-//   confirmButtonColor: "#5cb85c",
-//   confirmButtonText: "Aceptar",
-// });
+
 
 // Cambiar el texto del <span> utilizando textContent
 if (nPaciente != null) {

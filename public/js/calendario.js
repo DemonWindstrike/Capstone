@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     var calendarEl = document.getElementById('calendar');
     var calendarEvents = await fetchEvents(); // Obtener eventos de la base de datos
     var calendar = new FullCalendar.Calendar(calendarEl, {
-        locale: 'es',
+        locale: 'en',
         initialView: 'timeGridWeek',
         events: calendarEvents,
         hour: '2-digit',
