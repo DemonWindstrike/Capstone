@@ -30,6 +30,7 @@
 
   <!-- Custom styles for this template -->
   <link href="/style/registroespe.css" rel="stylesheet" />
+  <link href="/style/mantenedorEspecialista.css" rel="stylesheet" />
   <!-- responsive style -->
   <link href="/style/style.css" rel="stylesheet" />
 
@@ -106,6 +107,31 @@
           
         
       </div>
+      <!-- Modal para editar especialista -->
+<div id="modalEditarEspecialista" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Editar Especialista</h2>
+      <form id="formEditarEspecialista">
+        <input type="hidden" id="editIdEspecialista">
+        <div><input type="text" id="editNombreEspecialista" placeholder="Nombre"></div>
+        <div><input type="text" id="editRutEspecialista" placeholder="RUT"></div>
+        <div><input type="text" id="editTelefono" placeholder="Teléfono"></div>
+        <div><input type="email" id="editCorreo" placeholder="Correo Electrónico"></div>
+        <div><textarea id="editDescripcion" placeholder="Descripción"></textarea></div>
+        <div><input type="text" id="editCostoConsulta" placeholder="Costo Consulta"></div>
+        <div><input type="text" id="editEspecialidad" placeholder="Especialidad"></div>
+        <div><input type="text" id="editExperiencia" placeholder="Experiencia"></div>
+        <div><input type="text" id="editCentroMedico" placeholder="Centro Médico"></div>
+        <div><input type="text" id="editUniversidad" placeholder="Universidad"></div>
+        <div><input type="text" id="editTipoCentroMedico" placeholder="Tipo de Centro Médico"></div>
+        <div><input type="text" id="editNivelAtencion" placeholder="Nivel de Atención"></div>
+        <div><button type="submit" id="btnActualizarEspecialista">Actualizar</button></div>
+      </form>
+    </div>
+  </div>
+  
+    
     <!-- End registro especialista -->
 
 
