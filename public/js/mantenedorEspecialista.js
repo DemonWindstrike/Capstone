@@ -7,6 +7,19 @@ console.log(document.getElementById('formEditarEspecialista'));
 const txtLogin = document.getElementById("txtLogin");
 const txtNombre = document.getElementById("txtNombre"); 
 const btnRegisterEspecialista = document.getElementById("btnRegisterEspecialista");
+const logoutButton = document.getElementById('logoutButton');
+
+// Adjunta un event listener al botón
+logoutButton.addEventListener('click', function(event) {
+  event.preventDefault();
+  
+  // Elimina las cookies estableciendo su valor a una cadena vacía y una fecha de vencimiento en el pasado
+  document.cookie = "usuario=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+  document.cookie = "rol=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+  
+  // Redirecciona a la página de inicio de sesión o a donde desees después de cerrar sesión
+  window.location.href = "/"; // Cambia esta URL según tus necesidades
+});
 
 
 // Cambiar el texto del <span> utilizando textContent
