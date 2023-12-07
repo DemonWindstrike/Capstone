@@ -28,12 +28,14 @@ if (nPaciente != null) {
   txtNombre.classList.remove("d-none");
   imgLogin.classList.add("d-none")
   imgNombre.classList.remove("d-none")
+  logoutButton.classList.remove("d-none")
   txtNombre.textContent = nPaciente;
 }else{
   txtLogin.classList.remove("d-none");
   txtNombre.classList.add("d-none");
-  imgLogin.classList.remove("d-none")
-  imgNombre.classList.add("d-none")
+  imgLogin.classList.remove("d-none");
+  imgNombre.classList.add("d-none");
+  logoutButton.classList.add("d-none");
 }
 
 
