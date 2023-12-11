@@ -39,7 +39,7 @@ app.use('/resources', express.static(__dirname +'/public'));
 app.set('view engine', 'html');
 app.engine('html', require('ejs').renderFile);
 
-//Invocar bcryptjs
+// app.use(checkRole);
 
 
 //Var. session
@@ -55,14 +55,11 @@ const connection = require('./database/db')
 
 // Rutas
 //index usuario
-app.get("/", checkRole, (req, res) => {
-    // Si el middleware no redirige, se envía el archivo index.html
+app.get("/",checkRole , (req, res) => {
     res.sendFile(path.join(__dirname + "/views/index.html"));
 });
 
-//index admin
-app.get("/indexadmin", checkRole, (req, res) => {
-    // Si el middleware no redirige, se renderiza la vista de admin
+app.get("/indexadmin", checkRole , (req, res) => {
     res.render('indexadmin');
 });
 
@@ -116,17 +113,17 @@ app.get('/respuesta1', (req, res) => {
   });
   
 
-function checkRole(req, res, next) {
-   const userRole = req.cookies['rol'];
+  function checkRole(req, res, next) {
+    const userRole = req.cookies['rol'];
+    const path = req.path;
 
-   if (userRole === 'admin') {
-       res.redirect('/indexadmin');
-   } else if (userRole === 'usuario') {
-       res.redirect('/');
-   } else {
-       // En caso de no tener un rol definido o ser un rol no permitido
-       res.status(403).send("Acceso denegado");
-   }
+    if (userRole === 'admin' && path !== '/indexadmin') {
+        return res.redirect('/indexadmin');
+    } else if (userRole === 'usuario' && path !== '/') {
+        return res.redirect('/');
+    } else {
+        next();
+    }
 }
 
 
