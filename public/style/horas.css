@@ -21,7 +21,7 @@ body {
   
   
   h2 {
-    color: #333;
+    color: #000000;
     font-size: 20px;
   }
   
@@ -37,7 +37,7 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin: auto;
     overflow: hidden;
-    right: 480px;
+    right: 280px;
   }
   
   .card-image {
@@ -46,8 +46,10 @@ body {
   }
   
   .card-content {
+    position: relative;
     padding: 15px;
     background-color: #fff;
+    top: 200px;
   }
   
   .doctor-name {
@@ -85,7 +87,7 @@ body {
   .date-selector {
     position: relative;
     display: flex;
-    left: 289px;
+    left: 489px;
     bottom: 396px;
     width: 450px;
     justify-content: space-between;
@@ -95,7 +97,7 @@ body {
   
   .time-slots{
     position: relative;
-    right: 181px;
+    left: 19px;
     bottom: 325px;
     width: 450px;
     height: 324px;
