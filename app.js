@@ -54,12 +54,16 @@ app.use(session({
 const connection = require('./database/db')
 
 // Rutas
-app.get("/", (req, res) => {
+//index usuario
+app.get("/", checkRole, (req, res) => {
+    // Si el middleware no redirige, se envía el archivo index.html
     res.sendFile(path.join(__dirname + "/views/index.html"));
 });
 
-app.get("/indexadmin", (req, res) => {
-    res.render('indexadmin')
+//index admin
+app.get("/indexadmin", checkRole, (req, res) => {
+    // Si el middleware no redirige, se renderiza la vista de admin
+    res.render('indexadmin');
 });
 
 app.get("/registroespe", (req, res) => {
@@ -112,6 +116,18 @@ app.get('/respuesta1', (req, res) => {
   });
   
 
+function checkRole(req, res, next) {
+   const userRole = req.cookies['rol'];
+
+   if (userRole === 'admin') {
+       res.redirect('/indexadmin');
+   } else if (userRole === 'usuario') {
+       res.redirect('/');
+   } else {
+       // En caso de no tener un rol definido o ser un rol no permitido
+       res.status(403).send("Acceso denegado");
+   }
+}
 
 
 //validacion si el usuario tiene la sesion iniciada
