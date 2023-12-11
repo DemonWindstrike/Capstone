@@ -83,3 +83,245 @@
 #formEditarEspecialista button:hover {
     background-color: #4cae4c; /* Oscurece el botón al pasar el mouse */
 }
+
+/* Formulario de edit */
+
+#editNombreEspecialista{
+    width: 100%; /* que ocupe todo el ancho disponible */
+    padding: 10px 20px ; /* espacio interno del botón */
+    margin-top: 10px; /* separación entre el último campo y el botón */
+    border-color: black; /* sin bordes */
+    border-radius: 20px; /* bordes redondeados */
+    background-color: #ffffff; /* color de fondo */
+    color: #000000; /* texto en color blanco */
+    font-size: 1em; /* tamaño de fuente adecuado */
+    cursor: pointer; /* cursor en forma de mano al pasar por encima */
+    transition: background-color 0.3s ease; /* transición suave al cambiar el color de fondo */
+}
+
+#editRutEspecialista{
+    width: 100%; /* que ocupe todo el ancho disponible */
+    padding: 10px 20px ; /* espacio interno del botón */
+    margin-top: 10px; /* separación entre el último campo y el botón */
+    border-color: black; /* sin bordes */
+    border-radius: 20px; /* bordes redondeados */
+    background-color: #ffffff; /* color de fondo */
+    color: #000000; /* texto en color blanco */
+    font-size: 1em; /* tamaño de fuente adecuado */
+    cursor: pointer; /* cursor en forma de mano al pasar por encima */
+    transition: background-color 0.3s ease; /* transición suave al cambiar el color de fondo */
+}
+
+#editTelefono{
+    width: 100%; /* que ocupe todo el ancho disponible */
+    padding: 10px 20px ; /* espacio interno del botón */
+    margin-top: 10px; /* separación entre el último campo y el botón */
+    border-color: black; /* sin bordes */
+    border-radius: 20px; /* bordes redondeados */
+    background-color: #ffffff; /* color de fondo */
+    color: #000000; /* texto en color blanco */
+    font-size: 1em; /* tamaño de fuente adecuado */
+    cursor: pointer; /* cursor en forma de mano al pasar por encima */
+    transition: background-color 0.3s ease; /* transición suave al cambiar el color de fondo */
+}
+
+#editCorreo{
+    width: 100%; /* que ocupe todo el ancho disponible */
+    padding: 10px 20px ; /* espacio interno del botón */
+    margin-top: 10px; /* separación entre el último campo y el botón */
+    border-color: black; /* sin bordes */
+    border-radius: 20px; /* bordes redondeados */
+    background-color: #ffffff; /* color de fondo */
+    color: #000000; /* texto en color blanco */
+    font-size: 1em; /* tamaño de fuente adecuado */
+    cursor: pointer; /* cursor en forma de mano al pasar por encima */
+    transition: background-color 0.3s ease; /* transición suave al cambiar el color de fondo */
+}
+
+#editDescripcion{
+    width: 100%; /* que ocupe todo el ancho disponible */
+    padding: 10px 20px ; /* espacio interno del botón */
+    margin-top: 10px; /* separación entre el último campo y el botón */
+    border-color: black; /* sin bordes */
+    border-radius: 20px; /* bordes redondeados */
+    background-color: #ffffff; /* color de fondo */
+    color: #000000; /* texto en color blanco */
+    font-size: 1em; /* tamaño de fuente adecuado */
+    cursor: pointer; /* cursor en forma de mano al pasar por encima */
+    transition: background-color 0.3s ease; /* transición suave al cambiar el color de fondo */
+}
+
+#editCostoConsulta{
+    width: 100%; /* que ocupe todo el ancho disponible */
+    padding: 10px 20px ; /* espacio interno del botón */
+    margin-top: 10px; /* separación entre el último campo y el botón */
+    border-color: black; /* sin bordes */
+    border-radius: 20px; /* bordes redondeados */
+    background-color: #ffffff; /* color de fondo */
+    color: #000000; /* texto en color blanco */
+    font-size: 1em; /* tamaño de fuente adecuado */
+    cursor: pointer; /* cursor en forma de mano al pasar por encima */
+    transition: background-color 0.3s ease; /* transición suave al cambiar el color de fondo */
+}
+
+#editEspecialidad{
+    width: 100%; /* que ocupe todo el ancho disponible */
+    padding: 10px 20px ; /* espacio interno del botón */
+    margin-top: 10px; /* separación entre el último campo y el botón */
+    border-color: black; /* sin bordes */
+    border-radius: 20px; /* bordes redondeados */
+    background-color: #ffffff; /* color de fondo */
+    color: #000000; /* texto en color blanco */
+    font-size: 1em; /* tamaño de fuente adecuado */
+    cursor: pointer; /* cursor en forma de mano al pasar por encima */
+    transition: background-color 0.3s ease; /* transición suave al cambiar el color de fondo */
+}
+
+#editExperiencia{
+    width: 100%; /* que ocupe todo el ancho disponible */
+    padding: 10px 20px ; /* espacio interno del botón */
+    margin-top: 10px; /* separación entre el último campo y el botón */
+    border-color: black; /* sin bordes */
+    border-radius: 20px; /* bordes redondeados */
+    background-color: #ffffff; /* color de fondo */
+    color: #000000; /* texto en color blanco */
+    font-size: 1em; /* tamaño de fuente adecuado */
+    cursor: pointer; /* cursor en forma de mano al pasar por encima */
+    transition: background-color 0.3s ease; /* transición suave al cambiar el color de fondo */
+}
+
+#editCentroMedico{
+    width: 100%; /* que ocupe todo el ancho disponible */
+    padding: 10px 20px ; /* espacio interno del botón */
+    margin-top: 10px; /* separación entre el último campo y el botón */
+    border-color: black; /* sin bordes */
+    border-radius: 20px; /* bordes redondeados */
+    background-color: #ffffff; /* color de fondo */
+    color: #000000; /* texto en color blanco */
+    font-size: 1em; /* tamaño de fuente adecuado */
+    cursor: pointer; /* cursor en forma de mano al pasar por encima */
+    transition: background-color 0.3s ease; /* transición suave al cambiar el color de fondo */
+}
+
+#editUniversidad{
+    width: 100%; /* que ocupe todo el ancho disponible */
+    padding: 10px 20px ; /* espacio interno del botón */
+    margin-top: 10px; /* separación entre el último campo y el botón */
+    border-color: black; /* sin bordes */
+    border-radius: 20px; /* bordes redondeados */
+    background-color: #ffffff; /* color de fondo */
+    color: #000000; /* texto en color blanco */
+    font-size: 1em; /* tamaño de fuente adecuado */
+    cursor: pointer; /* cursor en forma de mano al pasar por encima */
+    transition: background-color 0.3s ease; /* transición suave al cambiar el color de fondo */
+}
+
+#editTipoCentroMedico{
+    width: 100%; /* que ocupe todo el ancho disponible */
+    padding: 10px 20px ; /* espacio interno del botón */
+    margin-top: 10px; /* separación entre el último campo y el botón */
+    border-color: black; /* sin bordes */
+    border-radius: 20px; /* bordes redondeados */
+    background-color: #ffffff; /* color de fondo */
+    color: #000000; /* texto en color blanco */
+    font-size: 1em; /* tamaño de fuente adecuado */
+    cursor: pointer; /* cursor en forma de mano al pasar por encima */
+    transition: background-color 0.3s ease; /* transición suave al cambiar el color de fondo */
+}
+
+#editNivelAtencion{
+    width: 100%; /* que ocupe todo el ancho disponible */
+    padding: 10px 20px ; /* espacio interno del botón */
+    margin-top: 10px; /* separación entre el último campo y el botón */
+    border-color: black; /* sin bordes */
+    border-radius: 20px; /* bordes redondeados */
+    background-color: #ffffff; /* color de fondo */
+    color: #000000; /* texto en color blanco */
+    font-size: 1em; /* tamaño de fuente adecuado */
+    cursor: pointer; /* cursor en forma de mano al pasar por encima */
+    transition: background-color 0.3s ease; /* transición suave al cambiar el color de fondo */
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px; /* bordes redondeados para el modal */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* sombra suave para darle profundidad */
+    font-family: Arial, sans-serif; /* Asegúrate de usar una fuente legible */
+    width: 80%; /* Ajusta esto según la anchura deseada del modal */
+    margin: auto; /* Centrar el modal en la pantalla */
+}
+
+.modal-content h2 {
+    color: #000000; /* Color para el título, similar al formulario de contacto */
+    text-align: center;
+    position: relative;
+    bottom: 20px;
+}
+
+#formEditarEspecialista {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Espacio entre campos */
+}
+
+#formEditarEspecialista div {
+    display: flex;
+    justify-content: center;
+}
+
+#formEditarEspecialista input[type="text"],
+#formEditarEspecialista input[type="email"],
+#formEditarEspecialista textarea {
+    width: 100%; /* Ajusta al ancho disponible */
+    padding: 10px; /* Espacio interno para la entrada de texto */
+    margin-bottom: 10px; /* Espacio entre campos */
+    border: 1px solid #ccc; /* Borde ligero */
+    background-color: #fff; /* Fondo blanco para los campos de entrada */
+    border-radius: 4px; /* Bordes ligeramente redondeados */
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.1); /* Sombra sutil para dar profundidad */
+    font-size: 16px; /* Tamaño de fuente legible */
+    transition: border-color 0.3s, box-shadow 0.3s; /* Transición suave para el enfoque */
+}
+
+/* Estilo cuando el usuario selecciona (hace foco en) un campo de entrada */
+#formEditarEspecialista input[type="text"]:focus,
+#formEditarEspecialista input[type="email"]:focus,
+#formEditarEspecialista textarea:focus {
+    border-color: #6C63FF; /* Cambia el color del borde al seleccionar */
+    box-shadow: 1px 1px 8px rgba(108, 99, 255, 0.5); /* Sombra más prominente al seleccionar */
+    outline: none; /* Elimina el contorno predeterminado al seleccionar */
+}
+
+#btnActualizarEspecialista {
+    width: 100%; /* que ocupe todo el ancho disponible */
+    padding: 10px 20px ; /* espacio interno del botón */
+    margin-top: 10px; /* separación entre el último campo y el botón */
+    border: none; /* sin bordes */
+    border-radius: 20px; /* bordes redondeados */
+    background-color: #6C63FF; /* color de fondo */
+    color: #fff; /* texto en color blanco */
+    font-size: 1em; /* tamaño de fuente adecuado */
+    cursor: pointer; /* cursor en forma de mano al pasar por encima */
+    transition: background-color 0.3s ease; /* transición suave al cambiar el color de fondo */
+}
+
+#btnActualizarEspecialista:hover {
+    background-color: #5757d1;
+}
+
+/* Ajustar el estilo al enfocar un campo */
+#formEditarEspecialista input[type="text"]:focus,
+#formEditarEspecialista input[type="email"]:focus,
+#formEditarEspecialista textarea:focus {
+    border-color: #6C63FF; /* color del borde al enfocar */
+    box-shadow: 0 0 8px rgba(108, 99, 255, 0.5); /* sombra exterior para resaltar */
+    outline: none; /* eliminar el contorno predeterminado */
+}
+
+#formEditarEspecialista > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+

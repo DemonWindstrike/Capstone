@@ -177,3 +177,19 @@
 #contenedor-buscar .search-box .search-container .d-none {
   display: none;
 }
+
+/*responsive*/
+
+@media (max-width: 968px) {
+  .search-container {
+      flex-direction: column;
+      align-items: stretch;
+  }
+
+  .search-input,
+  #searchButton {
+      width: 100%;
+      margin-bottom: 10px;
+  }
+}
+
