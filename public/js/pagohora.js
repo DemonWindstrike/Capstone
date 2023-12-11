@@ -492,6 +492,8 @@ async function generarIdDeTransaccion(numeroDeTarjeta) {
    }
 }
 var idTransacciones;
+var fechaAlert;
+var horaAlert;
 //listener boton pagar deberia accionar reserva de cita y generacion de id transaccion para emular un pago real
 btnPagar.addEventListener('click', () => {
     let card = cardnumber.value;
@@ -505,13 +507,24 @@ btnPagar.addEventListener('click', () => {
 
             // Asegúrate de que las variables existen o maneja el caso en que no existan
             if (horaSelect && dateSelect) {
+                let fecha = new Date(dateSelect);
+
+                // Extraer día, mes y año
+                let dia = fecha.getDate().toString().padStart(2, '0'); // Añade un cero al inicio si es necesario
+                let mes = (fecha.getMonth() + 1).toString().padStart(2, '0'); // getMonth() devuelve un índice basado en cero, por lo que se añade 1
+                let año = fecha.getFullYear();
+
+                // Formatear la fecha en dd/mm/yyyy
+                let fechaFormateada = `${dia}/${mes}/${año}`;
+                fechaAlert = fechaFormateada;
+                horaAlert = horaSelect;
                 // Ejecutar la función de reserva de cita
-                console.log("horaSelect: "+ horaSelect + "dateSelect"+ dateSelect);
+                console.log("horaSelect: "+ horaSelect + " dateSelect"+ fechaFormateada);
                 reservarHora(dateSelect, horaSelect);
                 Swal.fire({
                     position: "center",
                     icon: "success",
-                    title: "¡Cita registrada y pago completado con éxito! ¡Gracias por confiar en nuestros servicios! el id de la transaccion es: " + idTransaccion,
+                    title: `¡Cita registrada el ${fechaFormateada} a las ${horaSelect} y pago completado con éxito! ¡Gracias por confiar en nuestros servicios! el id de la transaccion es: ` + idTransaccion,
                     showConfirmButton: true,
                     confirmButtonColor: "#5cb85c",
                     confirmButtonText: "Aceptar",
@@ -544,13 +557,19 @@ function reservarHora(fecha, hora) {
     const fechaInicioEvento = new Date(_fecha + 'T' + hora + ':00');
     const fechaTerminoEvento = new Date(fechaInicioEvento.getTime() + 30 * 60000);// Asume que cada cita dura 30 minutos
     console.log("inicio: " + fechaInicioEvento + " termino: " + fechaTerminoEvento)
+    const offsetTermino = fechaTerminoEvento.getTimezoneOffset() * 60000;
+    const offsetInicio = fechaInicioEvento.getTimezoneOffset() * 60000;
+    const fechaLocal = new Date(fechaInicioEvento.getTime() - offsetInicio);
+    const fechaLocalTermino = new Date(fechaTerminoEvento.getTime() - offsetTermino);
+    console.log(fechaLocal.toISOString().slice(0, 19) + ' Termino: '+ fechaLocalTermino.toISOString().slice(0, 19))
     // Preparar el cuerpo de la solicitud
     const datosCita = {
       nombrePaciente: tituloCita,
-      fechaInicioEvento: fechaInicioEvento.toISOString().slice(0, 19),
-      fechaTerminoEvento: fechaTerminoEvento.toISOString().slice(0, 19),
+      fechaInicioEvento: fechaLocal.toISOString().slice(0, 19),
+      fechaTerminoEvento: fechaLocalTermino.toISOString().slice(0, 19),
       nombreEspecialista: nameDec
     };
+    //console.log(datosCita);
   
     // Enviar la solicitud fetch al nuevo endpoint
     fetch('http://localhost:303/api/registrar-cita', {
@@ -567,10 +586,11 @@ function reservarHora(fecha, hora) {
       return response.json();
     })
     .then(data => {
+        console.log(data);
         Swal.fire({
             position: "center",
             icon: "success",
-            title: "¡Cita registrada y pago completado con éxito! ¡Gracias por confiar en nuestros servicios! el id de la transaccion es: " + idTransacciones,
+            title: `¡Cita registrada el ${fechaAlert} a las ${horaAlert} y pago completado con éxito! ¡Gracias por confiar en nuestros servicios! el id de la transaccion es: ` + idTransacciones,
             showConfirmButton: true,
             confirmButtonColor: "#5cb85c",
             confirmButtonText: "Aceptar",
